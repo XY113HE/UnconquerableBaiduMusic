@@ -6,17 +6,22 @@
     android:layout_height="match_parent"
     tools:context="com.huoer.unconquerablebaidumusic.activity.MainActivity">
 
-    <android.support.v4.view.ViewPager
+    <FrameLayout
+        android:id="@+id/frame_mainactivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#dcdba4">
 
-    </android.support.v4.view.ViewPager>
+    </FrameLayout>
     <LinearLayout
+        android:id="@+id/main_bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="#d7b6b6"
         android:layout_alignParentBottom="true">
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"/>
     </LinearLayout>
 </RelativeLayout>
