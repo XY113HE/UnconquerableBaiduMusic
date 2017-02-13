@@ -1,122 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-<RelativeLayout android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/iv_minefragment_uppart"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@mipmap/mainfragment_uppart_bg"
-        android:scaleType="fitXY"/>
-    <ImageView
-        android:id="@+id/iv_user_head"
-        android:layout_alignBottom="@id/iv_minefragment_uppart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
-    <TextView
-        android:id="@+id/tv_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DDD"
-        android:layout_toRightOf="@id/iv_user_head"
-        android:layout_alignTop="@id/iv_user_head"/>
-    <TextView
-        android:id="@+id/tv_user_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DDD"
-        android:layout_toRightOf="@id/iv_user_head"
-        android:layout_alignBottom="@id/iv_user_head"/>
+    android:fillViewport="true"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_random_music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/iv_minefragment_uppart"
-        android:layout_alignBottom="@id/iv_minefragment_uppart"
-        android:text="随便听听"/>
-    <ImageView
-        android:id="@+id/iv_random_music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:layout_above="@id/tv_random_music"
-        android:layout_alignEnd="@id/iv_minefragment_uppart"
-       />
-    <LinearLayout
-        android:layout_below="@id/iv_minefragment_uppart"
-        android:id="@+id/ll_minefragment_localmusic"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--上部背景图片-->
+        <ImageView
+            android:id="@+id/iv_minefragment_uppart"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/mainfragment_uppart_bg" />
+        <!--用户头像-->
+        <ImageView
+            android:id="@+id/iv_user_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_minefragment_uppart"
+            android:src="@mipmap/ic_launcher" />
+        <!--用户名称-->
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="本地音乐"
-            android:gravity="center_vertical|start"
-            android:drawableStart="@mipmap/ic_launcher"
-            android:layout_height="match_parent" />
-        <!--<TextView-->
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_user_head"
+            android:layout_toRightOf="@id/iv_user_head"
+            android:text="DDD" />
+        <!--用户登录状态/用户信息-->
+        <TextView
+            android:id="@+id/tv_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_user_head"
+            android:layout_toRightOf="@id/iv_user_head"
+            android:text="DDD" />
+        <!--随便听听文字-->
+        <TextView
+            android:id="@+id/tv_random_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_minefragment_uppart"
+            android:layout_alignEnd="@id/iv_minefragment_uppart"
+            android:text="随便听听" />
+        <!--随便听听图标-->
+        <ImageView
+            android:id="@+id/iv_random_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_random_music"
+            android:layout_alignEnd="@id/iv_minefragment_uppart"
+            android:src="@mipmap/ic_launcher" />
+        <!--本地音乐条目-->
+        <LinearLayout
+            android:id="@+id/ll_minefragment_localmusic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_minefragment_uppart">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableStart="@mipmap/ic_launcher"
+                android:gravity="center_vertical|start"
+                android:text="本地音乐" />
+            <!--<TextView-->
             <!--android:id="@+id/tv_minefragment_localmusic_information"-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="match_parent" />-->
-        <ImageView
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+        <!--最近播放-->
+        <LinearLayout
+            android:id="@+id/ll_minefragment_recentlyplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_minefragment_localmusic">
 
-    <LinearLayout
-        android:layout_below="@id/ll_minefragment_localmusic"
-        android:id="@+id/ll_minefragment_recentlyplay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="最近播放"
-            android:gravity="center_vertical|start"
-            android:drawableStart="@mipmap/ic_launcher"
-            android:layout_height="match_parent" />
-        <!--<TextView-->
-        <!--android:id="@+id/tv_minefragment_localmusic_information"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent" />-->
-        <ImageView
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableStart="@mipmap/ic_launcher"
+                android:gravity="center_vertical|start"
+                android:text="最近播放" />
+            <!--<TextView-->
+            <!--android:id="@+id/tv_minefragment_localmusic_information"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+        <!--我的下载条目-->
+        <LinearLayout
+            android:id="@+id/ll_minefragment_mydownload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_minefragment_recentlyplay">
 
-    <LinearLayout
-        android:layout_below="@id/ll_minefragment_recentlyplay"
-        android:id="@+id/ll_minefragment_mydownload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableStart="@mipmap/ic_launcher"
+                android:gravity="center_vertical|start"
+                android:text="我的下载" />
+            <!--<TextView-->
+            <!--android:id="@+id/tv_minefragment_localmusic_information"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+        <!--自建歌单条目-->
+        <RelativeLayout
+            android:id="@+id/creat_musiclist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_minefragment_mydownload">
+            <!--自建歌单-->
+            <TextView
+                android:id="@+id/tv_tag_creatmusic_myself"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自建歌单" />
+            <!--新建-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="新建"
+                android:textColor="#aeadad" />
+            <!--我喜欢的单曲条目(可以多条目)-->
+            <RelativeLayout
+                android:id="@+id/ll_minefragment_my_love"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tag_creatmusic_myself">
+                <!--左边图标-->
+                <ImageView
+                    android:id="@+id/iv_minefragment_myloveicon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher" />
+                <!--我喜欢的单曲-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/iv_minefragment_myloveicon"
+                    android:text="我喜欢的单曲" />
+                <!--歌曲信息-->
+                <TextView
+                    android:id="@+id/tv_minefragment_my_love_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/iv_minefragment_myloveicon"
+                    android:layout_toEndOf="@id/iv_minefragment_myloveicon"
+                    android:text="0首" />
+                <!--右边的图标-->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/ic_launcher" />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--我的收藏-->
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="我的下载"
-            android:gravity="center_vertical|start"
-            android:drawableStart="@mipmap/ic_launcher"
-            android:layout_height="match_parent" />
-        <!--<TextView-->
-        <!--android:id="@+id/tv_minefragment_localmusic_information"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent" />-->
-        <ImageView
-            android:src="@mipmap/ic_launcher"
+            android:id="@+id/tv_minefragment_my_collect"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <RelativeLayout
-        android:id="@+id/creat_musiclist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/creat_musiclist"
+            android:text="我的收藏"/>
+        <LinearLayout
+            android:id="@+id/ll_minefragment_my_collect_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+        </LinearLayout>
 
     </RelativeLayout>
-</RelativeLayout>
 </ScrollView>
