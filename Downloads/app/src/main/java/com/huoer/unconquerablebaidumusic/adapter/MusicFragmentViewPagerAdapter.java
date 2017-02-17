@@ -19,21 +19,23 @@ package com.huoer.unconquerablebaidumusic.adapter;
               |       |
 */
 
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
 import java.util.List;
 
-public class MainFragmentViewPagerAdapter extends FragmentPagerAdapter{
-    private static final String TAG = "MainFragmentViewPagerAd";
-
+public class MusicFragmentViewPagerAdapter extends FragmentPagerAdapter {
+    private List<String> data;
     private List<Fragment> fragmentList;
 
-    public MainFragmentViewPagerAdapter(FragmentManager fm) {
+    public MusicFragmentViewPagerAdapter(FragmentManager fm) {
         super(fm);
+    }
+
+    public void setData(List<String> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     public void setFragmentList(List<Fragment> fragmentList) {
@@ -48,6 +50,6 @@ public class MainFragmentViewPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public int getCount() {
-        return fragmentList == null ? 0 : fragmentList.size();
+        return fragmentList.size();
     }
 }

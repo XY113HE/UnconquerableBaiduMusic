@@ -30,6 +30,7 @@ public class GuideActivityRecycleViewAdapter extends PagerAdapter {
 
     public void setViewList(List<View> viewList) {
         this.viewList = viewList;
+        notifyDataSetChanged();
     }
 
     @Override

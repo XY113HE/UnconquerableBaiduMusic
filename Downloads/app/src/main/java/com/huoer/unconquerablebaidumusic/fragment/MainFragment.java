@@ -75,7 +75,8 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         fragmentList.add(new ActionFragment());
         fragmentList.add(new FindFragment());
 
-        adapter = new MainFragmentViewPagerAdapter(getChildFragmentManager(), fragmentList);
+        adapter = new MainFragmentViewPagerAdapter(getChildFragmentManager());
+        adapter.setFragmentList(fragmentList);
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);

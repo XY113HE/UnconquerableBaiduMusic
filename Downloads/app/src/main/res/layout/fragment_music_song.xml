@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/tv_musicfragment_song_all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="全部"
+                android:drawableStart="@mipmap/ic_launcher"
+                android:textSize="25dp"/>
+
+            <TextView
+                android:id="@+id/tv_musicfragment_song_newest"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="最新"
+                android:textSize="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                />
+            <ImageView
+                android:id="@+id/tv_musicfragment_song_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                android:layout_toStartOf="@id/tv_musicfragment_song_newest"/>
+            <TextView
+                android:id="@+id/tv_musicfragment_song_hotest"
+                android:layout_toStartOf="@id/tv_musicfragment_song_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="最热"
+                android:textSize="20dp"
+                android:layout_centerVertical="true"
+
+                android:textColor="#31d7ef"/>
+
+        </RelativeLayout>
+        <GridView
+            android:id="@+id/gridview_musicfragment_song"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:numColumns="2"
+            android:background="#f88">
+
+        </GridView>
+        <View
+            android:layout_below="@id/gridview_musicfragment_song"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#29ea3c"/>
+    </LinearLayout>
+</ScrollView>

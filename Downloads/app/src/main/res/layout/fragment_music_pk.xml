@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_musicfragment_pk_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/textview_edittext_shape"
+            android:drawableStart="@mipmap/ic_launcher"
+            android:gravity="start|center_vertical"
+            android:text="搜索K歌伴奏" />
+
+        <ImageView
+            android:id="@+id/iv_musicfragment_pk_topimg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_musicfragment_pk_search"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:id="@+id/ll_musicfragment_pk_mypk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_musicfragment_pk_topimg">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@mipmap/ic_launcher"
+                android:gravity="center_vertical"
+                android:text="我的K歌" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/gridview_musicfragment_pk_mypk"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/ll_musicfragment_pk_mypk"
+            android:background="#BCC"
+            android:numColumns="3">
+
+        </GridView>
+
+        <TextView
+            android:id="@+id/tv_musicfragment_pk_wesing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridview_musicfragment_pk_mypk"
+            android:drawableStart="@mipmap/ic_launcher"
+            android:gravity="center_vertical"
+            android:text="大家都在唱" />
+         <ListView
+             android:id="@+id/lv_musicfragment_pk"
+
+             android:layout_below="@id/tv_musicfragment_pk_wesing"
+             android:layout_width="match_parent"
+             android:layout_height="1000dp"
+             android:background="#a19">
+
+         </ListView>
+        <View
+            android:layout_below="@id/lv_musicfragment_pk"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#29ea3c"/>
+    </RelativeLayout>
+</ScrollView>

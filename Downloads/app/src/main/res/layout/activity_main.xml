@@ -13,15 +13,55 @@
         android:background="#dcdba4">
 
     </FrameLayout>
-    <LinearLayout
+    <!--底部音乐播放栏-->
+    <RelativeLayout
         android:id="@+id/main_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="#d7b6b6"
+        android:layout_height="50dp"
+        android:background="#99d7b6b6"
         android:layout_alignParentBottom="true">
+        <!--音乐的封面-->
         <ImageView
+            android:id="@+id/iv_mainactivity_music_cover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"/>
-    </LinearLayout>
+        <!--歌曲名字-->
+        <TextView
+            android:id="@+id/tv_mainactivity_music_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stay Here Forever"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/iv_mainactivity_music_cover"/>
+        <!--歌曲演唱者-->
+        <TextView
+            android:id="@+id/tv_mainactivity_music_shiger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jewel"
+            android:textColor="#333"
+            android:layout_alignBottom="@id/iv_mainactivity_music_cover"
+            android:layout_toRightOf="@id/iv_mainactivity_music_cover"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
+            <ImageView
+                android:id="@+id/iv_mainactivity_play_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+            <ImageView
+                android:id="@+id/iv_mainactivity_pause_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+            <ImageView
+                android:id="@+id/iv_mainactivity_list_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

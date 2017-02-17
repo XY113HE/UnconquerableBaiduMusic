@@ -1,15 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@mipmap/mainfragment_uppart_bg"
-        android:scaleType="fitXY"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="find页面"/>
-</LinearLayout>
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/iv_findfragment_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/mainfragment_uppart_bg" />
+        <!--商城-->
+        <LinearLayout
+            android:id="@+id/ll_findfragment_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_findfragment_topbar">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@mipmap/ic_launcher"
+                android:gravity="center_vertical"
+                android:text="商城"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/gridview_findfragment_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_findfragment_shop"
+            android:numColumns="3">
+
+        </GridView>
+
+        <!--直播-->
+
+        <LinearLayout
+            android:id="@+id/ll_findfragment_live"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridview_findfragment_shop">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@mipmap/ic_launcher"
+                android:gravity="center_vertical"
+                android:text="直播"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+        </LinearLayout>
+        <!--直播图标(留着晚自习解决)-->
+        <GridView
+            android:id="@+id/gridview_findfragment_live"
+            android:layout_below="@id/ll_findfragment_live"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2">
+
+        </GridView>
+        <View
+            android:layout_below="@id/gridview_findfragment_live"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#29ea3c"/>
+    </RelativeLayout>
+
+</ScrollView>
