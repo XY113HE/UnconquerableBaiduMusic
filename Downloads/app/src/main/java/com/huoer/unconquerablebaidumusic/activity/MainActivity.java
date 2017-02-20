@@ -1,19 +1,17 @@
 package com.huoer.unconquerablebaidumusic.activity;
 
-import android.support.v4.app.Fragment;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
+
 
 import com.huoer.unconquerablebaidumusic.R;
-import com.huoer.unconquerablebaidumusic.adapter.MainFragmentViewPagerAdapter;
+
 import com.huoer.unconquerablebaidumusic.base.BaseActivity;
 import com.huoer.unconquerablebaidumusic.fragment.MainFragment;
 import com.huoer.unconquerablebaidumusic.fragment.MyLoginFragment;
 import com.huoer.unconquerablebaidumusic.fragment.SurchMusicFragment;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends BaseActivity implements MainFragment.FragmentButtonClick {
     private FragmentManager fragmentManager;
@@ -52,17 +50,18 @@ public class MainActivity extends BaseActivity implements MainFragment.FragmentB
 
         switch (which){
             case MYLOGIN_JUMP:
-                ft.setCustomAnimations(R.anim.anim_fragment_right_in, R.anim.anim_fragment_right_out);
+                ft.setCustomAnimations(R.anim.anim_fragment_right_in, R.anim.anim_fragment_right_out,
+                        R.anim.anim_fragment_right_in_back, R.anim.anim_fragment_right_out_back);
                 ft.replace(R.id.frame_mainactivity, new MyLoginFragment());
                 ft.addToBackStack(null);
                 ft.commit();
                 break;
             case SURCHMUSIC_JUMP:
-                ft.setCustomAnimations(R.anim.anim_fragment_left_in, R.anim.anim_fragment_left_out);
+                ft.setCustomAnimations(R.anim.anim_fragment_left_in, R.anim.anim_fragment_left_out,
+                        R.anim.anim_fragment_left_in_back, R.anim.anim_fragment_left_out_back);
                 ft.replace(R.id.frame_mainactivity, new SurchMusicFragment());
                 ft.addToBackStack(null);
                 ft.commit();
-                break;
         }
     }
 

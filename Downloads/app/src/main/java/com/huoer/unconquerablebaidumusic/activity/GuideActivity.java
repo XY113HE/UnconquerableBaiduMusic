@@ -20,6 +20,7 @@ package com.huoer.unconquerablebaidumusic.activity;
 */
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,7 @@ public class GuideActivity extends BaseActivity {
     private GuideActivityRecycleViewAdapter adapter;
     private List<View> viewList;
 
+
     @Override
     protected int bindLayout() {
         return R.layout.activity_guide;
@@ -45,7 +47,18 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-       viewPager = bindView(R.id.viewpager_guide);
+        //判断一下是否是首次进入该应用,否的话跳过引导页
+        SharedPreferences sp = getSharedPreferences("isFirst", MODE_PRIVATE);
+        boolean isFirst = sp.getBoolean("isFirst", true);
+        if(!isFirst){
+            finishActivity();
+        }else{
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("isFirst", false);
+            editor.commit();
+        }
+
+        viewPager = bindView(R.id.viewpager_guide);
     }
 
     @Override
@@ -59,8 +72,7 @@ public class GuideActivity extends BaseActivity {
         secondGuidePager.findViewById(R.id.view_jump).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GuideActivity.this, MainActivity.class));
-                finish();
+                finishActivity();
             }
         });
 
@@ -71,6 +83,11 @@ public class GuideActivity extends BaseActivity {
         adapter.setViewList(viewList);
         viewPager.setAdapter(adapter);
 
+    }
+
+    private void finishActivity() {
+        startActivity(new Intent(GuideActivity.this, MainActivity.class));
+        finish();
     }
 
     @Override
