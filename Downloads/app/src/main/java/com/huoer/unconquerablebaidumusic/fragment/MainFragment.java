@@ -78,6 +78,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         adapter = new MainFragmentViewPagerAdapter(getChildFragmentManager());
         adapter.setFragmentList(fragmentList);
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(4);
 
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#00000000"));

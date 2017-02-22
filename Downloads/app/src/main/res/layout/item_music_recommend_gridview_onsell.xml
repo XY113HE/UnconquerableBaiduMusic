@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:id="@+id/iv_item_music_recommend_gridview_onsell_bg"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/tv_item_music_recommend_gridview_onsell_title"
+        android:layout_below="@id/iv_item_music_recommend_gridview_onsell_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="God Onliy Knows"
+        android:textColor="#000"
+        android:padding="5dp"/>
+    <TextView
+        android:id="@+id/tv_item_music_recommend_gridview_onsell_author"
+        android:layout_below="@id/tv_item_music_recommend_gridview_onsell_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="John Legend"
+        android:padding="5dp"/>
+</RelativeLayout>

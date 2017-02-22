@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
+    <!--搜索栏-->
+    <EditText
+        android:id="@+id/tv_musicfragment_pk_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:background="#1a3"/>
-    <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="搜索音乐"/>
+        android:layout_margin="5dp"
+
+        android:background="@drawable/textview_edittext_shape"
+        android:drawableStart="@mipmap/ic_launcher"
+        android:hint="歌曲,歌手,歌词,朋友,话题"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"/>
 </LinearLayout>

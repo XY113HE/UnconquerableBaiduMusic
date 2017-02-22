@@ -63,6 +63,7 @@ public class MusicFragment extends BaseFragment {
         adapter.setData(Arrays.asList(tabtitles));
         adapter.setFragmentList(fragmentList);
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(5);
         tabLayout.setupWithViewPager(viewPager);
         for (int i = 0; i < tabLayout.getTabCount(); i++){
             tabLayout.getTabAt(i).setText(tabtitles[i]);

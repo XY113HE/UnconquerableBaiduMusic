@@ -2,19 +2,25 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     >
 
     <RelativeLayout
+        android:id="@+id/rl_musicfragment_muisc_recommend_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:clipChildren="false">
 
         <!--轮播图-->
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager_musicfragment_recommend_ad_content"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="#bfb3ea">
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:clipChildren="false"
+            >
 
         </android.support.v4.view.ViewPager>
 
@@ -161,14 +167,14 @@
                 android:src="@mipmap/ic_launcher"
                 />
         </LinearLayout>
-        <GridView
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_musiclist_recommend"
             android:layout_below="@id/ll_musicfragment_musiclist_recommend"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:numColumns="3">
 
-        </GridView>
+        </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--新碟上架-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_newlist_onsell"
@@ -191,14 +197,14 @@
                 android:src="@mipmap/ic_launcher"
                 />
         </LinearLayout>
-        <GridView
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_newlist_onsell"
             android:layout_below="@id/ll_musicfragment_newlist_onsell"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:numColumns="3">
 
-        </GridView>
+        </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--热销专辑-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_hotsell_album"
@@ -270,25 +276,25 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/radio1"/>
             <ImageView
 
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/raido2"/>
             <ImageView
 
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/radio3"/>
             <ImageView
 
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/radio4"/>
 
         </LinearLayout>
 
@@ -314,13 +320,13 @@
                 android:src="@mipmap/ic_launcher"
                 />
         </LinearLayout>
-        <ListView
+        <com.huoer.unconquerablebaidumusic.customview.MyListView
             android:id="@+id/lv_musicfragment_recommend_today"
             android:layout_below="@id/ll_musicfragment_recommend_today"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </ListView>
+        </com.huoer.unconquerablebaidumusic.customview.MyListView>
         <!--原创音乐-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_original_music"
@@ -344,14 +350,14 @@
                 />
         </LinearLayout>
 
-        <GridView
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_original_music"
             android:layout_below="@id/ll_musicfragment_original_music"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numColumns="3">
 
-        </GridView>
+        </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--最热mv推荐-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_hot_mv_recommend"
@@ -374,14 +380,14 @@
                 android:src="@mipmap/ic_launcher"
                 />
         </LinearLayout>
-        <GridView
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_hot_mv_recommend"
             android:layout_below="@id/ll_musicfragment_hot_mv_recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="3">
 
-        </GridView>
+        </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--乐播节目-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_leprogram"
@@ -404,7 +410,7 @@
                 android:src="@mipmap/ic_launcher"
                 />
         </LinearLayout>
-        <GridView
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_leprogram"
             android:layout_below="@id/ll_musicfragment_leprogram"
             android:layout_width="match_parent"
@@ -428,13 +434,19 @@
 
         </LinearLayout>
 
-        <ListView
+        <com.huoer.unconquerablebaidumusic.customview.MyListView
             android:id="@+id/lv_musicfragment_special_column"
             android:layout_below="@id/ll_musicfragment_special_column"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </ListView>
+        </com.huoer.unconquerablebaidumusic.customview.MyListView>
+        <!--<android.support.v7.widget.SearchView-->
+            <!--android:id="@+id/haha"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+        <!--</android.support.v7.widget.SearchView>-->
         <View
             android:layout_below="@id/lv_musicfragment_special_column"
             android:layout_width="match_parent"

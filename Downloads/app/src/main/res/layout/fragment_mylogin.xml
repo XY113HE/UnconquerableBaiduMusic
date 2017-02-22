@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    fillViewport="true">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/iv_myloginfragment_headimg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            android:background="#000"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <TextView
-            android:id="@+id/tv_myloginfragment_username"
-            android:layout_toEndOf="@id/iv_myloginfragment_headimg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="、、DD5864466841"/>
-        <ImageView
-            android:id="@+id/iv_myloginfragment_level"
-            android:layout_toEndOf="@id/iv_myloginfragment_headimg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"/>
-        <ImageView
-            android:id="@+id/iv_myloginfragment_signin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"/>
-    </RelativeLayout>
+            android:id="@+id/tv_myloginfragment_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#5ec0f1"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/ic_launcher"
+            android:gravity="center|start"
+            android:text="更多" />
 
+        <com.huoer.unconquerablebaidumusic.customview.MyListView
+            android:id="@+id/lv_myloginfragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</LinearLayout>
+        </com.huoer.unconquerablebaidumusic.customview.MyListView>
+    </LinearLayout>
+
+</ScrollView>

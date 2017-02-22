@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_item_music_pk_mypk_wesing_songname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="爱情余味 - 张信哲"/>
+    <TextView
+        android:id="@+id/tv_item_music_pk_mypk_wesing_amount"
+        android:layout_below="@id/tv_item_music_pk_mypk_wesing_songname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2878人唱过"/>
+    <ImageView
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"/>
+</RelativeLayout>

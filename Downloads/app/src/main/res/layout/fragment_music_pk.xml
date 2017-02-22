@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <!--搜索栏-->
         <TextView
             android:id="@+id/tv_musicfragment_pk_search"
             android:layout_width="match_parent"
@@ -17,20 +17,19 @@
             android:drawableStart="@mipmap/ic_launcher"
             android:gravity="start|center_vertical"
             android:text="搜索K歌伴奏" />
-
-        <ImageView
-            android:id="@+id/iv_musicfragment_pk_topimg"
+        <!--轮播图-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_musicfragment_pk_topimg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_below="@id/tv_musicfragment_pk_search"
-            android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
-
+        <!--我的K歌-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_pk_mypk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_musicfragment_pk_topimg">
+            android:layout_below="@id/viewpager_musicfragment_pk_topimg">
 
             <TextView
                 android:layout_width="0dp"
@@ -47,16 +46,16 @@
                 android:src="@mipmap/ic_launcher" />
         </LinearLayout>
 
-        <GridView
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_pk_mypk"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
             android:layout_below="@id/ll_musicfragment_pk_mypk"
-            android:background="#BCC"
+
             android:numColumns="3">
 
-        </GridView>
-
+        </com.huoer.unconquerablebaidumusic.customview.MyGridView>
+        <!--大家都在唱-->
         <TextView
             android:id="@+id/tv_musicfragment_pk_wesing"
             android:layout_width="wrap_content"
@@ -65,15 +64,15 @@
             android:drawableStart="@mipmap/ic_launcher"
             android:gravity="center_vertical"
             android:text="大家都在唱" />
-         <ListView
+         <com.huoer.unconquerablebaidumusic.customview.MyListView
              android:id="@+id/lv_musicfragment_pk"
 
              android:layout_below="@id/tv_musicfragment_pk_wesing"
              android:layout_width="match_parent"
-             android:layout_height="1000dp"
-             android:background="#a19">
+             android:layout_height="match_parent"
+             >
 
-         </ListView>
+         </com.huoer.unconquerablebaidumusic.customview.MyListView>
         <View
             android:layout_below="@id/lv_musicfragment_pk"
             android:layout_width="match_parent"
