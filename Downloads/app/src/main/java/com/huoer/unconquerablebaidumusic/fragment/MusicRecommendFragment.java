@@ -24,9 +24,13 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -42,15 +46,19 @@ import com.huoer.unconquerablebaidumusic.adapter.MusicRecommendListViewTodayAdap
 import com.huoer.unconquerablebaidumusic.adapter.MusicRecommendViewPagerAdapter;
 import com.huoer.unconquerablebaidumusic.base.BaseFragment;
 
-public class MusicRecommendFragment extends BaseFragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MusicRecommendFragment extends BaseFragment implements View.OnClickListener {
     private static final String TAG = "MusicRecommendFragment";
     public ViewPager viewPager;
     private boolean shouldContinue = true;
     private RelativeLayout container;
     private MusicRecommendViewPagerAdapter adapter;
-    private int[] imgIds = {R.mipmap.num1, R.mipmap.num2, R.mipmap.num3,
-            R.mipmap.num4, R.mipmap.num5};
+    private int[] imgIds = {R.mipmap.viewpager1, R.mipmap.viewpager2, R.mipmap.viewpager3};
     private Handler handler = new Handler(Looper.getMainLooper());
+    private LinearLayout linearLayout;
+    private List<View> viewList;
 
     private GridView musicListGridView;
     private MusicRecommendGridViewMusicListAdapter musicListAdapter;
@@ -86,6 +94,7 @@ public class MusicRecommendFragment extends BaseFragment {
         hotMvGridView = bindView(R.id.gridview_musicfragment_hot_mv_recommend);
         leProgramGridView = bindView(R.id.gridview_musicfragment_leprogram);
         specialColumnListView = bindView(R.id.lv_musicfragment_special_column);
+        linearLayout = bindView(R.id.ll_musicfragment_recommend_ad_content_tag);
     }
 
     @Override
@@ -99,6 +108,10 @@ public class MusicRecommendFragment extends BaseFragment {
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
         startCirclePlay();
+        viewList = new ArrayList<View>();
+        createViewPagerTag();
+        viewPagerAddView();
+
 
         musicListAdapter = new MusicRecommendGridViewMusicListAdapter();
         musicListAdapter.setContext(getContext());
@@ -132,6 +145,26 @@ public class MusicRecommendFragment extends BaseFragment {
         specialColumnAdapter.setContext(getContext());
         specialColumnListView.setAdapter(specialColumnAdapter);
 
+    }
+
+    private void viewPagerAddView() {
+        for (int i = 0; i < viewList.size(); i++){
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 10);
+            params.setMargins(5, 0, 5, 0);
+            linearLayout.addView(viewList.get(i), params);
+
+        }
+    }
+
+    private void createViewPagerTag() {
+
+        for(int i = 0; i < 7; i++){
+            View view = LayoutInflater.from(getContext()).inflate(R.layout.item_viewpager_tag, null);
+            view.setId(1008600+i);
+            view.setOnClickListener(this);
+            viewList.add(view);
+
+        }
     }
 
     private void startCirclePlay() {
@@ -171,5 +204,11 @@ public class MusicRecommendFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         shouldContinue = false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int index = v.getId()-1008600;
+        viewPager.setCurrentItem(index);
     }
 }

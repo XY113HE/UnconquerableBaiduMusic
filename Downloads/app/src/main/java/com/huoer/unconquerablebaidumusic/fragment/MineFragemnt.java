@@ -19,10 +19,23 @@ package com.huoer.unconquerablebaidumusic.fragment;
               |       |
 */
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.huoer.unconquerablebaidumusic.R;
 import com.huoer.unconquerablebaidumusic.base.BaseFragment;
 
-public class MineFragemnt extends BaseFragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MineFragemnt extends BaseFragment{
+    private TextView randomTry;
+
+
     @Override
     protected int bindLayout() {
         return R.layout.fragment_mine;
@@ -30,6 +43,7 @@ public class MineFragemnt extends BaseFragment {
 
     @Override
     protected void initView() {
+        randomTry = bindView(R.id.tv_random_music);
 
     }
 
@@ -38,8 +52,18 @@ public class MineFragemnt extends BaseFragment {
 
     }
 
+
+
     @Override
     protected void initListener() {
+        randomTry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
+
+
 }

@@ -2,114 +2,86 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    >
+    android:fillViewport="true">
 
     <RelativeLayout
         android:id="@+id/rl_musicfragment_muisc_recommend_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:clipChildren="false">
+        android:clipChildren="false"
+        android:orientation="vertical">
 
         <!--轮播图-->
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager_musicfragment_recommend_ad_content"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:clipChildren="false"
-            >
+            android:layout_marginStart="40dp"
+            android:clipChildren="false">
 
         </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:id="@+id/ll_musicfragment_recommend_ad_content_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:layout_alignBottom="@id/viewpager_musicfragment_recommend_ad_content">
+
+        </LinearLayout>
 
         <!--分类列表-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_fuction"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/viewpager_musicfragment_recommend_ad_content">
 
-            <LinearLayout
+
+
+
+
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_recommend_singer"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="歌手"
-                    android:textColor="#22caec" />
-
-            </LinearLayout>
-
-            <LinearLayout
+                android:text="歌手"
+                android:drawablePadding="5dp"
+                android:textColor="#50A3FF" />
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_recommend_songclass"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="歌曲分类"
-                    android:textColor="#22caec" />
-
-            </LinearLayout>
-
-            <LinearLayout
+                android:text="歌曲分类"
+                android:drawablePadding="5dp"
+                android:textColor="#50A3FF"/>
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_recommend_video"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:text="电台"
+                android:drawablePadding="5dp"
+                android:textColor="#50A3FF" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="电台"
-                    android:textColor="#22caec" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_recommend_vip"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:text="会员专区"
+                android:drawablePadding="5dp"
+                android:textColor="#50A3FF" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="会员专区"
-                    android:textColor="#22caec" />
-
-            </LinearLayout>
         </LinearLayout>
 
         <!--广告-->
@@ -148,90 +120,111 @@
         <!--歌单推荐-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_musiclist_recommend"
-            android:layout_below="@id/rl_musicfragment_recommend_ad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="歌单推荐"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
-        </LinearLayout>
-        <com.huoer.unconquerablebaidumusic.customview.MyGridView
-            android:id="@+id/gridview_musicfragment_musiclist_recommend"
-            android:layout_below="@id/ll_musicfragment_musiclist_recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/rl_musicfragment_recommend_ad">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_song"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:text="歌单推荐"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/icon_option_setting_arrow"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="15dp"
+                android:text="更多" />
+        </LinearLayout>
+
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
+            android:id="@+id/gridview_musicfragment_musiclist_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_musicfragment_musiclist_recommend"
             android:numColumns="3">
 
         </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--新碟上架-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_newlist_onsell"
-            android:layout_below="@id/gridview_musicfragment_musiclist_recommend"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridview_musicfragment_musiclist_recommend">
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="新碟上架"
-                android:textSize="20dp"
-                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_newpage"
                 android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
+                android:paddingStart="15dp"
+                android:text="新碟上架"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/icon_option_setting_arrow"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="15dp"
+                android:text="更多" />
         </LinearLayout>
+
         <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_newlist_onsell"
-            android:layout_below="@id/ll_musicfragment_newlist_onsell"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/ll_musicfragment_newlist_onsell"
             android:numColumns="3">
 
         </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--热销专辑-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_hotsell_album"
-            android:layout_below="@id/gridview_musicfragment_newlist_onsell"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridview_musicfragment_newlist_onsell">
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="热销专辑"
-                android:textSize="20dp"
-                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommed_hotsale"
                 android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
+                android:paddingStart="15dp"
+                android:text="热销专辑"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/icon_option_setting_arrow"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="15dp"
+                android:text="更多" />
         </LinearLayout>
+
         <GridView
             android:id="@+id/gridview_musicfragment_hotsell_album"
-            android:layout_below="@id/ll_musicfragment_hotsell_album"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/ll_musicfragment_hotsell_album"
             android:numColumns="3">
 
         </GridView>
@@ -239,31 +232,37 @@
 
         <ImageView
             android:id="@+id/iv_musicfragment_recommend_imgad"
-            android:layout_below="@id/gridview_musicfragment_hotsell_album"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridview_musicfragment_hotsell_album" />
         <!--场景电台-->
 
         <LinearLayout
             android:id="@+id/ll_musicfragment_radio_title"
-            android:layout_below="@id/iv_musicfragment_recommend_imgad"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_musicfragment_recommend_imgad">
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="场景电台"
-                android:textSize="20dp"
-                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_scene"
                 android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
+                android:paddingStart="15dp"
+                android:text="场景电台"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/icon_option_setting_arrow"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="15dp"
+                android:text="更多" />
         </LinearLayout>
 
         <LinearLayout
@@ -271,186 +270,213 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ll_musicfragment_radio_title">
+
             <ImageView
 
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/radio1"/>
+                android:layout_weight="1"
+                android:src="@mipmap/radio1" />
+
             <ImageView
 
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/raido2"/>
+                android:layout_weight="1"
+                android:src="@mipmap/raido2" />
+
             <ImageView
 
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/radio3"/>
+                android:layout_weight="1"
+                android:src="@mipmap/radio3" />
+
             <ImageView
 
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/radio4"/>
+                android:layout_weight="1"
+                android:src="@mipmap/radio4" />
 
         </LinearLayout>
 
         <!--今日推荐歌曲-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_recommend_today"
-            android:layout_below="@id/ll_musicfragment_radio"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_musicfragment_radio">
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="今日推荐歌曲"
-                android:textSize="20dp"
-                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_todaysong"
                 android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
+                android:paddingStart="15dp"
+                android:text="今日推荐歌曲"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/icon_option_setting_arrow"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="15dp"
+                android:text="更多" />
         </LinearLayout>
+
         <com.huoer.unconquerablebaidumusic.customview.MyListView
             android:id="@+id/lv_musicfragment_recommend_today"
-            android:layout_below="@id/ll_musicfragment_recommend_today"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_musicfragment_recommend_today">
 
         </com.huoer.unconquerablebaidumusic.customview.MyListView>
         <!--原创音乐-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_original_music"
-            android:layout_below="@id/lv_musicfragment_recommend_today"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lv_musicfragment_recommend_today">
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="原创音乐"
-                android:textSize="20dp"
-                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_create"
                 android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
+                android:paddingStart="15dp"
+                android:text="原创音乐"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
         </LinearLayout>
 
         <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_musicfragment_original_music"
-            android:layout_below="@id/ll_musicfragment_original_music"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/ll_musicfragment_original_music"
             android:numColumns="3">
 
         </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--最热mv推荐-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_hot_mv_recommend"
-            android:layout_below="@id/gridview_musicfragment_original_music"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="最热mv推荐"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
-        </LinearLayout>
-        <com.huoer.unconquerablebaidumusic.customview.MyGridView
-            android:id="@+id/gridview_musicfragment_hot_mv_recommend"
-            android:layout_below="@id/ll_musicfragment_hot_mv_recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/gridview_musicfragment_original_music">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_mv"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:text="最热mv推荐"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/icon_option_setting_arrow"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="15dp"
+                android:text="更多" />
+        </LinearLayout>
+
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
+            android:id="@+id/gridview_musicfragment_hot_mv_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_musicfragment_hot_mv_recommend"
             android:numColumns="3">
 
         </com.huoer.unconquerablebaidumusic.customview.MyGridView>
         <!--乐播节目-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_leprogram"
-            android:layout_below="@id/gridview_musicfragment_hot_mv_recommend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="乐播节目"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:src="@mipmap/ic_launcher"
-                />
-        </LinearLayout>
-        <com.huoer.unconquerablebaidumusic.customview.MyGridView
-            android:id="@+id/gridview_musicfragment_leprogram"
-            android:layout_below="@id/ll_musicfragment_leprogram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numColumns="3"/>
-            <!--专栏-->
+            android:layout_below="@id/gridview_musicfragment_hot_mv_recommend">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_lebo"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:text="乐播节目"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/icon_option_setting_arrow"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="15dp"
+                android:text="更多" />
+        </LinearLayout>
+
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
+            android:id="@+id/gridview_musicfragment_leprogram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_musicfragment_leprogram"
+            android:numColumns="3" />
+        <!--专栏-->
         <LinearLayout
             android:id="@+id/ll_musicfragment_special_column"
-            android:layout_below="@id/gridview_musicfragment_leprogram"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridview_musicfragment_leprogram">
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="专栏"
-                android:textSize="20dp"
-                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_recommend_columnist"
                 android:gravity="center_vertical"
-                android:drawableStart="@mipmap/ic_launcher"/>
+                android:paddingStart="15dp"
+                android:text="专栏"
+                android:textColor="#000"
+                android:textSize="18dp" />
 
         </LinearLayout>
 
         <com.huoer.unconquerablebaidumusic.customview.MyListView
             android:id="@+id/lv_musicfragment_special_column"
-            android:layout_below="@id/ll_musicfragment_special_column"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_musicfragment_special_column">
 
         </com.huoer.unconquerablebaidumusic.customview.MyListView>
         <!--<android.support.v7.widget.SearchView-->
-            <!--android:id="@+id/haha"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+        <!--android:id="@+id/haha"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
         <!--</android.support.v7.widget.SearchView>-->
         <View
-            android:layout_below="@id/lv_musicfragment_special_column"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#29ea3c"/>
+            android:layout_below="@id/lv_musicfragment_special_column"
+            android:background="#29ea3c" />
     </RelativeLayout>
 </ScrollView>

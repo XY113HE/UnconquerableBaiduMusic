@@ -1,17 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!--搜索栏-->
-    <EditText
-        android:id="@+id/tv_musicfragment_pk_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
 
-        android:background="@drawable/textview_edittext_shape"
-        android:drawableStart="@mipmap/ic_launcher"
-        android:hint="歌曲,歌手,歌词,朋友,话题"
-        android:imeOptions="actionSearch"
-        android:singleLine="true"/>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <!--顶部搜索bar-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5ec0f1">
+
+            <ImageView
+                android:id="@+id/iv_surchmusic_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+            <!--搜索栏-->
+            <EditText
+                android:id="@+id/et_surchmusic"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/textview_edittext_shape"
+                android:hint="歌曲,歌手,歌词,朋友,话题"
+                android:imeOptions="actionSearch"
+                android:paddingStart="15dp"
+                android:singleLine="true"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/iv_surchmusic_surch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="热门搜索" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_blue"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="成都"
+                android:textColor="#5ec0f1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="孤芳不自赏"
+                android:textColor="#333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="薛之谦"
+                android:textColor="#333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="张杰"
+                android:textColor="#333" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="周杰伦"
+                android:textColor="#333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="儿歌"
+                android:textColor="#333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="刚好遇见你"
+                android:textColor="#333" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="张信哲《夏夜星空海》"
+                android:textColor="#333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/textview_stroke_gray"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="古巨基《最爱》"
+                android:textColor="#333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#ccc" />
+        <TextView
+            android:id="@+id/tv_surchmusic_nohistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:textColor="#000"
+            android:text="无搜索历史记录"
+            android:visibility="gone"/>
+
+        <ListView
+            android:id="@+id/lv_surchmusic_history_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </LinearLayout>
+
+</ScrollView>

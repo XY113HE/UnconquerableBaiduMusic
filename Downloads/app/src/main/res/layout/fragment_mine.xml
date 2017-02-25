@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:scrollbars="none">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,60 +12,74 @@
         <ImageView
             android:id="@+id/iv_minefragment_uppart"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/mainfragment_uppart_bg" />
+            android:layout_height="wrap_content"
+            android:background="#21a8f5"
+            android:src="@mipmap/ic_mymusic_picture"
+            android:scaleType="fitXY"/>
         <!--用户头像-->
         <ImageView
             android:id="@+id/iv_user_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignBottom="@id/iv_minefragment_uppart"
-            android:src="@mipmap/ic_launcher" />
-        <!--用户名称-->
-        <TextView
-            android:id="@+id/tv_user_name"
+            android:src="@mipmap/img_titlebar_login"
+            android:padding="10dp"
+            />
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_alignTop="@id/iv_user_head"
             android:layout_toRightOf="@id/iv_user_head"
-            android:text="DDD" />
-        <!--用户登录状态/用户信息-->
-        <TextView
-            android:id="@+id/tv_user_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/iv_user_head"
-            android:layout_toRightOf="@id/iv_user_head"
-            android:text="DDD" />
-        <!--随便听听文字-->
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即登录"
+                android:textSize="12dp"
+                android:textColor="#fff"/>
+            <!--用户登录状态/用户信息-->
+            <TextView
+                android:id="@+id/tv_user_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收藏的歌曲永不丢失"
+                android:textSize="12dp"
+                android:textColor="#fff"/>
+        </LinearLayout>
+        <!--用户名称-->
+
+        <!--随便听听-->
         <TextView
             android:id="@+id/tv_random_music"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/iv_minefragment_uppart"
             android:layout_alignEnd="@id/iv_minefragment_uppart"
-            android:text="随便听听" />
-        <!--随便听听图标-->
-        <ImageView
-            android:id="@+id/iv_random_music"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/tv_random_music"
-            android:layout_alignEnd="@id/iv_minefragment_uppart"
-            android:src="@mipmap/ic_launcher" />
+            android:text="随便听听"
+            android:drawableTop="@drawable/ic_mymusic_try_selector"
+            android:textColor="#fff"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:textSize="13dp"/>
+
         <!--本地音乐条目-->
         <LinearLayout
             android:id="@+id/ll_minefragment_localmusic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:paddingStart="5dp"
             android:layout_below="@id/iv_minefragment_uppart">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawableStart="@mipmap/ic_launcher"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_mymusic_local_normal"
                 android:gravity="center_vertical|start"
                 android:text="本地音乐" />
             <!--<TextView-->
@@ -75,13 +89,16 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_songlist_play"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="15dp"/>
         </LinearLayout>
         <!--最近播放-->
         <LinearLayout
             android:id="@+id/ll_minefragment_recentlyplay"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:paddingStart="5dp"
             android:gravity="center"
             android:layout_below="@id/ll_minefragment_localmusic">
 
@@ -89,9 +106,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawableStart="@mipmap/ic_launcher"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_mymusic_play_normal"
                 android:gravity="center_vertical|start"
-                android:text="最近播放" />
+                android:text="最近播放"
+                android:id="@+id/textView" />
             <!--<TextView-->
             <!--android:id="@+id/tv_minefragment_localmusic_information"-->
             <!--android:layout_width="wrap_content"-->
@@ -99,20 +120,25 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_marginEnd="20dp"
+                android:src="@mipmap/icon_option_setting_arrow" />
         </LinearLayout>
         <!--我的下载条目-->
         <LinearLayout
             android:id="@+id/ll_minefragment_mydownload"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:paddingStart="5dp"
             android:layout_below="@id/ll_minefragment_recentlyplay">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawableStart="@mipmap/ic_launcher"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/ic_mymusic_download_normal"
                 android:gravity="center_vertical|start"
                 android:text="我的下载" />
             <!--<TextView-->
@@ -122,61 +148,92 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_marginEnd="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/icon_option_setting_arrow"/>
         </LinearLayout>
-        <!--自建歌单条目-->
+
         <RelativeLayout
             android:id="@+id/creat_musiclist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ll_minefragment_mydownload">
             <!--自建歌单-->
+            <!--自建歌单条目-->
             <TextView
                 android:id="@+id/tv_tag_creatmusic_myself"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="自建歌单" />
+                android:text="自建歌单"
+                android:paddingTop="10dp"
+                android:paddingStart="15dp"
+                android:textColor="#000"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+
             <!--新建-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@id/tv_tag_creatmusic_myself"
                 android:text="新建"
-                android:textColor="#aeadad" />
+                android:textColor="#aeadad"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="20dp"
+                android:id="@+id/textView2" />
             <!--我喜欢的单曲条目(可以多条目)-->
             <RelativeLayout
                 android:id="@+id/ll_minefragment_my_love"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:layout_below="@id/tv_tag_creatmusic_myself">
-                <!--左边图标-->
                 <ImageView
                     android:id="@+id/iv_minefragment_myloveicon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
-                <!--我喜欢的单曲-->
-                <TextView
+                    android:src="@mipmap/ic_mymusic_like"
+                    android:padding="10dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+                <!--左边图标-->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/iv_minefragment_myloveicon"
-                    android:text="我喜欢的单曲" />
-                <!--歌曲信息-->
-                <TextView
-                    android:id="@+id/tv_minefragment_my_love_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/iv_minefragment_myloveicon"
-                    android:layout_toEndOf="@id/iv_minefragment_myloveicon"
-                    android:text="0首" />
+                    android:orientation="vertical"
+
+                    android:layout_toEndOf="@id/iv_minefragment_myloveicon">
+                    <!--我喜欢的单曲-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我喜欢的单曲"
+                        android:textColor="#000"
+                        android:paddingTop="10dp"/>
+                    <!--歌曲信息-->
+                    <TextView
+                        android:id="@+id/tv_minefragment_my_love_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0首"
+                        android:padding="5dp"/>
+                </LinearLayout>
+
                 <!--右边的图标-->
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_marginEnd="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_option_setting_arrow"/>
+
+
 
             </RelativeLayout>
+
+
 
         </RelativeLayout>
 
@@ -186,12 +243,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/creat_musiclist"
-            android:text="我的收藏" />
+            android:text="我的收藏"
+            android:paddingTop="10dp"
+            android:paddingStart="15dp"
+            android:textColor="#000"/>
         <!--我的收藏列表-->
         <LinearLayout
             android:id="@+id/ll_minefragment_my_collect_list"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_below="@id/tv_minefragment_my_collect">
 
             <TextView
@@ -199,8 +262,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:text="歌单" />
-
+                android:text="歌单"
+                android:id="@+id/textView3" />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:background="#000"
+                android:layout_gravity="center_vertical"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -208,12 +276,22 @@
                 android:layout_height="wrap_content"
                 android:text="专辑" />
 
+            <View
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:background="#000"
+                android:layout_gravity="center_vertical"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:text="歌手" />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:background="#000"
+                android:layout_gravity="center_vertical"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -223,21 +301,21 @@
                 android:text="文章" />
         </LinearLayout>
         <RelativeLayout
+            android:id="@+id/rl_musicfragment_login"
             android:layout_below="@id/ll_minefragment_my_collect_list"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/tv_minefragment_login_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+
             <TextView
                 android:id="@+id/tv_minefragment_login"
-                android:layout_toEndOf="@id/tv_minefragment_login_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@mipmap/icon_tips_login"
                 android:layout_centerVertical="true"
                 android:textColor="#26e0f1"
                 android:text="立即登录"/>
@@ -247,17 +325,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text=", 让音乐跟着你走"/>
+                android:text=",  让音乐跟着你走"/>
         </RelativeLayout>
 
+
         <View
-            android:id="@+id/view_minefragment_test"
-            android:layout_below="@id/ll_minefragment_my_collect_list"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:background="#000"/>
-        <View
-            android:layout_below="@id/view_minefragment_test"
+            android:layout_below="@id/rl_musicfragment_login"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#29ea3c"/>

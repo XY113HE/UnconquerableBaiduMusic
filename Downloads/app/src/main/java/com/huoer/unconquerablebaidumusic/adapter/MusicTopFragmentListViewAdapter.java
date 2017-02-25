@@ -46,7 +46,7 @@ public class MusicTopFragmentListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize;
+        return dataSize+1;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class MusicTopFragmentListViewAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == dataSize - 1 || position == dataSize - 2) {
+        if (position == dataSize) {
             return BOTTOM_VIEW;
         } else {
             return NORMAL_VIEW;

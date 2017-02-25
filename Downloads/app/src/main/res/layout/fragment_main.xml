@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
@@ -13,32 +13,36 @@
 
     </android.support.v4.view.ViewPager>
 
-    <ImageView
-        android:id="@+id/iv_jump_mylogin"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher" />
-    <ImageView
+        android:background="#31a7e2">
 
-        android:id="@+id/iv_jump_surchmusic"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:src="@mipmap/ic_launcher" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tablayout_mainfragment"
-        android:layout_toEndOf="@id/iv_jump_mylogin"
-        android:layout_toStartOf="@id/iv_jump_surchmusic"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:tabSelectedTextColor="#f9f7f7"
-        app:tabTextColor="#d6d2d2"
+        <ImageView
+            android:id="@+id/iv_jump_mylogin"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_more_selector"
+            android:paddingStart="15dp"/>
 
-       >
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout_mainfragment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            app:tabSelectedTextColor="#f9f7f7"
+            app:tabTextColor="#d6d2d2">
 
-    </android.support.design.widget.TabLayout>
+        </android.support.design.widget.TabLayout>
 
+        <ImageView
+            android:id="@+id/iv_jump_surchmusic"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/bt_titlebar_new_search_selector"
+            android:paddingEnd="15dp"/>
+    </LinearLayout>
 
 
 </RelativeLayout>

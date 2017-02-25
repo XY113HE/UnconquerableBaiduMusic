@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
         <ImageView
@@ -15,13 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/mainfragment_uppart_bg" />
-        <!--商城-->
+            android:src="@mipmap/mainfragment_uppart_bg" /><!--商城-->
         <LinearLayout
             android:id="@+id/ll_findfragment_shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_findfragment_topbar">
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -40,14 +42,13 @@
 
         </LinearLayout>
 
-        <GridView
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
             android:id="@+id/gridview_findfragment_shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ll_findfragment_shop"
             android:numColumns="3">
 
-        </GridView>
+        </com.huoer.unconquerablebaidumusic.customview.MyGridView>
 
         <!--直播-->
 
@@ -55,7 +56,7 @@
             android:id="@+id/ll_findfragment_live"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/gridview_findfragment_shop">
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -73,20 +74,71 @@
                 android:src="@mipmap/ic_launcher" />
 
         </LinearLayout>
-        <!--直播图标(留着晚自习解决)-->
-        <GridView
-            android:id="@+id/gridview_findfragment_live"
-            android:layout_below="@id/ll_findfragment_live"
+        直播图标(留着晚自习解决)
+
+        <LinearLayout
+            android:id="@+id/ll_findfragment_live_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numColumns="2">
+            android:padding="10dp">
 
-        </GridView>
-        <View
-            android:layout_below="@id/gridview_findfragment_live"
+            <com.huoer.unconquerablebaidumusic.customview.CircleTextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:bgColor="#c862ce"
+                app:radius="25dp"
+                app:text="女神"
+                app:textSize="14dp" />
+
+            <com.huoer.unconquerablebaidumusic.customview.CircleTextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:bgColor="#9b5dda"
+                app:radius="25dp"
+                app:text="好声音"
+                app:textSize="14dp" />
+
+            <com.huoer.unconquerablebaidumusic.customview.CircleTextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:bgColor="#e640ef"
+                app:radius="25dp"
+                app:text="劲爆"
+                app:textSize="14dp" />
+
+            <com.huoer.unconquerablebaidumusic.customview.CircleTextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:bgColor="#dc6eb7"
+                app:radius="25dp"
+                app:text="萌妹"
+                app:textSize="14dp" />
+
+            <com.huoer.unconquerablebaidumusic.customview.CircleTextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:bgColor="#57c0e6"
+                app:radius="25dp"
+                app:text="推荐"
+                app:textSize="14dp" />
+        </LinearLayout>
+
+        <com.huoer.unconquerablebaidumusic.customview.MyGridView
+
+            android:id="@+id/gridview_findfragment_live"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#29ea3c"/>
-    </RelativeLayout>
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            android:layout_marginBottom="-130dp">
+
+        </com.huoer.unconquerablebaidumusic.customview.MyGridView>
+
+
+    </LinearLayout>
 
 </ScrollView>
