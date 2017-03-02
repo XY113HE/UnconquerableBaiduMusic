@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="vertical"
+    android:padding="5dp">
+
     <ImageView
         android:id="@+id/iv_item_music_recommend_listview_today_bg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_item_music_recommend_listview_today_songname"
-        android:layout_toEndOf="@id/iv_item_music_recommend_listview_today_bg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
 
-        android:text="Everything But The Gril"/>
-    <TextView
-        android:id="@+id/tv_item_music_recommend_listview_today_author"
-        android:layout_toEndOf="@id/iv_item_music_recommend_listview_today_bg"
-        android:layout_below="@id/tv_item_music_recommend_listview_today_songname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Darin"/>
+        android:src="@mipmap/ic_launcher" />
+
     <ImageView
-        android:layout_alignParentEnd="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+
+        android:src="@mipmap/bt_recsong_play" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/iv_item_music_recommend_listview_today_bg"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/tv_item_music_recommend_listview_today_songname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Everything But The Gril"
+            android:textSize="12dp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/tv_item_music_recommend_listview_today_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:text="Darin" />
+    </LinearLayout>
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_alignParentEnd="true"
+        android:src="@mipmap/bt_recsong_more"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"/>
 
 </RelativeLayout>

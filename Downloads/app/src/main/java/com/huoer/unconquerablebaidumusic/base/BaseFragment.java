@@ -27,7 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment{
-    private View v;
+    protected View v;
 
     @Nullable
     @Override

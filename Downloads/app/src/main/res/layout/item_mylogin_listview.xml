@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="50dp">
     <ImageView
         android:id="@+id/iv_item_mylogin_listview_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:padding="5dp"/>
+        android:src="@mipmap/icon_option_setting_setting"
+        android:paddingStart="15dp"
+        android:paddingEnd="5dp"
+        android:layout_centerVertical="true"/>
     <TextView
         android:id="@+id/tv_item_mylogin_listview_title"
         android:layout_centerVertical="true"
@@ -20,9 +22,10 @@
         android:id="@+id/iv_item_mylogin_listview_nextpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:padding="5dp"
-        android:layout_alignParentEnd="true"/>
+        android:src="@mipmap/icon_option_setting_arrow"
+        android:padding="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"/>
     <TextView
         android:id="@+id/tv_item_mylogin_listview_extrainfo"
         android:layout_width="wrap_content"

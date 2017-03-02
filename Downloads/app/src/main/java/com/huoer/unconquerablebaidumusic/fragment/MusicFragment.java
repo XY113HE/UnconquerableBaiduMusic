@@ -19,6 +19,7 @@ package com.huoer.unconquerablebaidumusic.fragment;
               |       |
 */
 
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -63,8 +64,10 @@ public class MusicFragment extends BaseFragment {
         adapter.setData(Arrays.asList(tabtitles));
         adapter.setFragmentList(fragmentList);
         viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(5);
+        viewPager.setOffscreenPageLimit(9);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#31a7e2"));
+        tabLayout.setTabTextColors(Color.BLACK, Color.parseColor("#31a7e2"));
         for (int i = 0; i < tabLayout.getTabCount(); i++){
             tabLayout.getTabAt(i).setText(tabtitles[i]);
         }

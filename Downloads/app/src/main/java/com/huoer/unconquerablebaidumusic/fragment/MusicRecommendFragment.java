@@ -49,7 +49,7 @@ import com.huoer.unconquerablebaidumusic.base.BaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MusicRecommendFragment extends BaseFragment implements View.OnClickListener {
+public class MusicRecommendFragment extends BaseFragment{
     private static final String TAG = "MusicRecommendFragment";
     public ViewPager viewPager;
     private boolean shouldContinue = true;
@@ -76,6 +76,7 @@ public class MusicRecommendFragment extends BaseFragment implements View.OnClick
     private MusicRecommendGridViewLeProgramAdapter leProgramAdapter;
     private ListView specialColumnListView;
     private MusicRecommendListViewSpecialColumnAdapter specialColumnAdapter;
+    private int lastId = 0;
 
     @Override
     protected int bindLayout() {
@@ -145,6 +146,31 @@ public class MusicRecommendFragment extends BaseFragment implements View.OnClick
         specialColumnAdapter.setContext(getContext());
         specialColumnListView.setAdapter(specialColumnAdapter);
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                int nowId = 1008600 + (position % viewList.size());
+                if(lastId == 0) {
+                    v.findViewById(nowId).setSelected(true);
+                    lastId = nowId;
+                }else{
+                    v.findViewById(lastId).setSelected(false);
+                    v.findViewById(nowId).setSelected(true);
+                    lastId = nowId;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
     private void viewPagerAddView() {
@@ -158,10 +184,9 @@ public class MusicRecommendFragment extends BaseFragment implements View.OnClick
 
     private void createViewPagerTag() {
 
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < imgIds.length; i++){
             View view = LayoutInflater.from(getContext()).inflate(R.layout.item_viewpager_tag, null);
             view.setId(1008600+i);
-            view.setOnClickListener(this);
             viewList.add(view);
 
         }
@@ -206,9 +231,5 @@ public class MusicRecommendFragment extends BaseFragment implements View.OnClick
         shouldContinue = false;
     }
 
-    @Override
-    public void onClick(View v) {
-        int index = v.getId()-1008600;
-        viewPager.setCurrentItem(index);
-    }
+
 }

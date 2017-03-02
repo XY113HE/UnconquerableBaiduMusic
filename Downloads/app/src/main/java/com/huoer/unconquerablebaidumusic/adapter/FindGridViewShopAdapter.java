@@ -20,6 +20,7 @@ package com.huoer.unconquerablebaidumusic.adapter;
 */
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import android.widget.TextView;
 import com.huoer.unconquerablebaidumusic.R;
 
 public class FindGridViewShopAdapter extends BaseAdapter {
+    private static final String TAG = "FindGridViewShopAdapter";
     private Context context;
     private int dataSize = 3;
 

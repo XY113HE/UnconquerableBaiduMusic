@@ -28,6 +28,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.huoer.unconquerablebaidumusic.R;
 import com.huoer.unconquerablebaidumusic.adapter.MainFragmentViewPagerAdapter;
@@ -49,6 +50,8 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
     private ImageView jumpMyLogin, jumpSurchMusic;
     private FragmentButtonClick fragmentButtonClick;
 
+    private LinearLayout tabBarLayout;
+
     public void setFragmentButtonClick(FragmentButtonClick fragmentButtonClick) {
         this.fragmentButtonClick = fragmentButtonClick;
     }
@@ -64,6 +67,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         tabLayout = bindView(R.id.tablayout_mainfragment);
         jumpMyLogin = bindView(R.id.iv_jump_mylogin);
         jumpSurchMusic = bindView(R.id.iv_jump_surchmusic);
+        tabBarLayout = bindView(R.id.ll_mainfragment_topbar);
     }
 
     @Override
@@ -78,7 +82,8 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         adapter = new MainFragmentViewPagerAdapter(getChildFragmentManager());
         adapter.setFragmentList(fragmentList);
         viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(7);
+//        viewPager.setCurrentItem(1);
 
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#00000000"));
@@ -86,6 +91,30 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setText(titles[i]);
         }
+
+        //大致实现topbar顶部在主页背景透明,其它页面则显示蓝色
+        tabBarLayout.setBackgroundColor(Color.parseColor("#00000000"));
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 0){
+                    tabBarLayout.setBackgroundColor(Color.parseColor("#00000000"));
+                }else{
+                    tabBarLayout.setBackgroundColor(Color.parseColor("#ff31a7e2"));
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override

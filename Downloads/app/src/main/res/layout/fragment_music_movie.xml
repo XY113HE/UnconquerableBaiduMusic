@@ -3,59 +3,79 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:scrollbars="none">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <!--展示数据的gridview-->
+        <GridView
+            android:id="@+id/gridview_musicfragment_movie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2">
+
+        </GridView>
+        <!--顶部标题栏-->
         <RelativeLayout
             android:id="@+id/rl_musicfragment_movie"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="50dp"
+            android:background="#F9F9F9">
             <TextView
                 android:id="@+id/tv_musicfragment_movie_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="全部"
-                android:drawableStart="@mipmap/ic_launcher"
+                android:textColor="#000"
+                android:drawablePadding="5dp"
+                android:layout_centerVertical="true"
+                android:drawableStart="@mipmap/stick_icon"
+                android:paddingStart="10dp"
                 android:textSize="25dp"/>
+            <ImageView
+                android:id="@+id/iv_musicfragment_movie_all_kind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bt_mv_pull_down_normal"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:layout_toEndOf="@id/tv_musicfragment_movie_all"/>
 
             <TextView
-                android:id="@+id/tv_musicfragment_movie_newest"
+                android:id="@+id/tv_musicfragment_movie_hotest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="最热"
                 android:textSize="20dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                />
-            <ImageView
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_alignBaseline="@+id/tv_musicfragment_movie_newest"
+                android:layout_alignBottom="@+id/tv_musicfragment_movie_newest"
+                android:layout_alignParentEnd="true"/>
+            <View
                 android:id="@+id/tv_musicfragment_movie_symbol"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                android:layout_toStartOf="@id/tv_musicfragment_movie_newest"/>
+                android:layout_width="2dp"
+                android:layout_height="15dp"
+                android:layout_marginBottom="3dp"
+                android:background="#aaa"
+                android:layout_alignBottom="@id/tv_musicfragment_movie_hotest"
+                android:layout_toStartOf="@id/tv_musicfragment_movie_hotest"/>
             <TextView
-                android:id="@+id/tv_musicfragment_movie_hotest"
+                android:id="@+id/tv_musicfragment_movie_newest"
                 android:layout_toStartOf="@id/tv_musicfragment_movie_symbol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="最新"
                 android:textSize="20dp"
+                android:paddingEnd="10dp"
                 android:layout_centerVertical="true"
                 android:textColor="#31d7ef"/>
 
-        </RelativeLayout>
-        <GridView
-            android:id="@+id/gridview_musicfragment_movie"
-            android:layout_below="@id/rl_musicfragment_movie"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#f7d26d"
-            android:numColumns="2">
 
-        </GridView>
+        </RelativeLayout>
+
 
     </RelativeLayout>
 </ScrollView>

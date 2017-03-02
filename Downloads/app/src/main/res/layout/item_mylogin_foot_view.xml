@@ -2,15 +2,21 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
     <TextView
+        android:id="@+id/tv_item_mylogin_foot_view"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="49dp"
         android:text="退出登录"
         android:textColor="#3649da"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:gravity="center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DADADA"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="50dp"

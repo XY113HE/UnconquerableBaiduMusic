@@ -1,56 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
     >
     <!--榜单封面-->
     <ImageView
         android:id="@+id/iv_item_music_top_listview_bg"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#dcb9f9"/>
     <!--播放按钮-->
     <ImageView
         android:id="@+id/iv_item_music_top_listview_play"
         android:layout_alignEnd="@id/iv_item_music_top_listview_bg"
         android:layout_alignBottom="@id/iv_item_music_top_listview_bg"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:src="@drawable/bt_play_selector"/>
     <!--榜单具体分类-->
     <TextView
         android:id="@+id/tv_item_music_top_listview_kind"
-        android:layout_marginTop="20dp"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="非主流音乐榜"
+        android:layout_marginStart="15dp"
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_toEndOf="@id/iv_item_music_top_listview_bg"/>
     <!--前三首歌-->
     <TextView
         android:id="@+id/tv_item_music_top_listview_list1"
+        android:layout_marginTop="8dp"
         android:layout_below="@id/tv_item_music_top_listview_kind"
         android:layout_toEndOf="@id/iv_item_music_top_listview_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
         android:text="一生所爱"
-        android:drawableStart="@mipmap/ic_launcher"/>
+        android:drawableStart="@mipmap/img_top_number_1"/>
     <TextView
         android:id="@+id/tv_item_music_top_listview_list2"
         android:layout_below="@id/tv_item_music_top_listview_list1"
         android:layout_toEndOf="@id/iv_item_music_top_listview_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="3dp"
         android:text="丑八怪"
-        android:drawableStart="@mipmap/ic_launcher"/>
+        android:drawableStart="@mipmap/img_top_number_2"/>
     <TextView
         android:id="@+id/tv_item_music_top_listview_list3"
         android:layout_below="@id/tv_item_music_top_listview_list2"
         android:layout_toEndOf="@id/iv_item_music_top_listview_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="3dp"
         android:text="小拳拳锤你胸口"
-        android:drawableStart="@mipmap/ic_launcher"/>
-
+        android:drawableStart="@mipmap/img_top_number_3"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon_option_setting_arrow"
+        android:padding="15dp"/>
 </RelativeLayout>

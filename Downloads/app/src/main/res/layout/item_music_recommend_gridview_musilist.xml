@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
     <ImageView
         android:id="@+id/iv_item_music_recommend_gridview_musiclist_bg"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@mipmap/ic_launcher"/>
-    <ImageView
-        android:id="@+id/iv_item_music_recommend_gridview_musiclist_listen_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_margin="5dp"
-        android:layout_alignBottom="@id/iv_item_music_recommend_gridview_musiclist_bg"/>
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#e8ead3" />
+
+
     <TextView
         android:id="@+id/tv_item_music_recommend_gridview_musiclist_listen_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_item_music_recommend_gridview_musiclist_bg"
+        android:drawableStart="@mipmap/ic_listen_count"
+        android:gravity="center_vertical"
         android:text="36798"
-        android:layout_alignBottom="@id/iv_item_music_recommend_gridview_musiclist_listen_icon"
-        android:layout_margin="5dp"
-        android:layout_toEndOf="@id/iv_item_music_recommend_gridview_musiclist_listen_icon"/>
+        android:textColor="#FFF"
+        android:layout_margin="3dp"
+        android:drawablePadding="3dp"
+        android:textSize="12dp" />
+
+
     <TextView
         android:id="@+id/tv_item_music_recommend_gridview_musiclist_title"
-        android:layout_below="@id/iv_item_music_recommend_gridview_musiclist_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/iv_item_music_recommend_gridview_musiclist_bg"
+        android:layout_marginTop="5dp"
+        android:textSize="12dp"
         android:text="[环球之音]时尚运动超爽节奏"
-        android:textColor="#000"/>
+        android:textColor="#000" />
+
+
 </RelativeLayout>

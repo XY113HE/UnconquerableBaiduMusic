@@ -20,6 +20,7 @@ package com.huoer.unconquerablebaidumusic.adapter;
 */
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,11 @@ import android.widget.TextView;
 import com.huoer.unconquerablebaidumusic.R;
 
 public class FindGridViewLiveAdapter extends BaseAdapter {
+    private static final String TAG = "FindGridViewLiveAdapter";
     private final int BODY_VIEW = 0;
     private final int FOOT_VIEW = 1;
     private Context context;
-    private int dataSize = 6;
+    private int dataSize = 4;
 
     public void setContext(Context context) {
         this.context = context;
@@ -41,7 +43,7 @@ public class FindGridViewLiveAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize;
+        return dataSize+2;
     }
 
     @Override
@@ -82,6 +84,7 @@ public class FindGridViewLiveAdapter extends BaseAdapter {
             }
         }
         //TODO 具体数据设置操作
+        Log.e(TAG, "getView: " + position);
         return convertView;
     }
 
@@ -105,7 +108,7 @@ public class FindGridViewLiveAdapter extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
 //        return BODY_VIEW;
-        if(position == dataSize-1 || position == dataSize-2){
+        if(position == dataSize || position == dataSize+1){
             return FOOT_VIEW;
         }else{
             return BODY_VIEW;

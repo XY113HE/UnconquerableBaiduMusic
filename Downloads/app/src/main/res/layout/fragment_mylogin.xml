@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fillViewport="true">
-
+    android:orientation="vertical">
+    <!--顶部bar-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="50dp"
+        android:background="#5ec0f1">
 
         <TextView
             android:id="@+id/tv_myloginfragment_topbar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:background="#5ec0f1"
-            android:drawablePadding="5dp"
-            android:drawableStart="@mipmap/ic_launcher"
+            android:drawablePadding="10dp"
+            android:drawableStart="@mipmap/bt_return_nor"
             android:gravity="center|start"
-            android:text="更多" />
-
-        <com.huoer.unconquerablebaidumusic.customview.MyListView
-            android:id="@+id/lv_myloginfragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </com.huoer.unconquerablebaidumusic.customview.MyListView>
+            android:paddingStart="10dp"
+            android:text="更多"
+            android:textColor="#fff" />
     </LinearLayout>
 
-</ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/item_mylogin_head_view" />
+            <!--下部可滑动listview-->
+            <com.huoer.unconquerablebaidumusic.customview.MyListView
+                android:id="@+id/lv_myloginfragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </com.huoer.unconquerablebaidumusic.customview.MyListView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -32,12 +32,12 @@ import android.widget.TextView;
 import com.huoer.unconquerablebaidumusic.R;
 
 public class MyLoginListViewAdapter extends BaseAdapter {
-    private final int HEAD_VIEW = 0;
-    private final int BODY_VIEW = 1;
-    private final int FOOT_VIEW = 2;
+    private final int BODY_VIEW = 0;
+    private final int FOOT_VIEW = 1;
 
     private Context context;
     private String[] titles;
+    private int[] imgIds;
 
     public void setContext(Context context) {
         this.context = context;
@@ -47,9 +47,14 @@ public class MyLoginListViewAdapter extends BaseAdapter {
         this.titles = titles;
     }
 
+    public void setImgIds(int[] imgIds) {
+        this.imgIds = imgIds;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
-        return titles.length+2;
+        return titles.length;
     }
 
     @Override
@@ -66,9 +71,7 @@ public class MyLoginListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = null;
         switch (getItemViewType(position)){
-            case HEAD_VIEW:
-                v = LayoutInflater.from(context).inflate(R.layout.item_mylogin_head_view, parent, false);
-                break;
+
             case BODY_VIEW:
                 MyLoginViewHolder holder = null;
                 if(convertView == null){
@@ -80,12 +83,16 @@ public class MyLoginListViewAdapter extends BaseAdapter {
                 }
 
                 //TODO 具体数据设置操作
-                holder.title.setText(titles[position-1]);
+                holder.title.setText(titles[position]);
+                holder.icon.setImageResource(imgIds[position]);
+                holder.extrainfo.setVisibility(View.GONE);
                 v = convertView;
                 break;
             case FOOT_VIEW:
 
                 v = LayoutInflater.from(context).inflate(R.layout.item_mylogin_foot_view, parent, false);
+                v.findViewById(R.id.tv_item_mylogin_foot_view).setVisibility(View.GONE);
+
                 break;
         }
 
@@ -105,14 +112,12 @@ public class MyLoginListViewAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 3;
+        return 2;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(position == 0){
-            return HEAD_VIEW;
-        }else if(position == titles.length+1){
+        if(position == titles.length+1){
             return FOOT_VIEW;
         }else{
             return BODY_VIEW;

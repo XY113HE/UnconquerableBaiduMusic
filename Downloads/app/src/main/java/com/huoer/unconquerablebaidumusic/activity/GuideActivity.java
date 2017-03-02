@@ -21,6 +21,8 @@ package com.huoer.unconquerablebaidumusic.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +40,6 @@ public class GuideActivity extends BaseActivity {
     private ViewPager viewPager;
     private GuideActivityRecycleViewAdapter adapter;
     private List<View> viewList;
-
 
     @Override
     protected int bindLayout() {

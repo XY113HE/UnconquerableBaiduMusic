@@ -14,6 +14,7 @@
     </android.support.v4.view.ViewPager>
 
     <LinearLayout
+        android:id="@+id/ll_mainfragment_topbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#31a7e2">
@@ -23,6 +24,7 @@
             android:id="@+id/iv_jump_mylogin"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_marginEnd="40dp"
             android:src="@drawable/ic_more_selector"
             android:paddingStart="15dp"/>
 
@@ -40,6 +42,7 @@
             android:id="@+id/iv_jump_surchmusic"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_marginStart="40dp"
             android:src="@drawable/bt_titlebar_new_search_selector"
             android:paddingEnd="15dp"/>
     </LinearLayout>

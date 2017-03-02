@@ -2,12 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ec92ae">
+
+    android:padding="5dp">
     <ImageView
         android:id="@+id/iv_item_find_gridview_live_bg"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_height="120dp"
+        android:background="#ff6acd"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@mipmap/img_live_play_shade"
         android:scaleType="fitXY"/>
     <TextView
         android:id="@+id/tv_item_find_gridview_live_amount"
@@ -15,8 +20,11 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/iv_item_find_gridview_live_bg"
         android:text="29402"
+        android:textColor="#fff"
+        android:textSize="12dp"
         android:gravity="center_vertical"
-        android:drawableStart="@mipmap/ic_launcher"/>
+        android:padding="10dp"
+        android:drawableStart="@mipmap/img_live_play_people"/>
     <ImageView
         android:id="@+id/iv_item_find_gridview_live_playicon"
         android:layout_width="wrap_content"
@@ -24,13 +32,13 @@
         android:layout_alignParentEnd="true"
         android:padding="10dp"
         android:layout_alignBottom="@id/iv_item_find_gridview_live_bg"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/ic_live_play_selector"/>
     <TextView
         android:id="@+id/tv_item_find_gridview_live_title"
         android:layout_below="@id/iv_item_find_gridview_live_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="12dp"
         android:text="团子求 过任务"
-        android:padding="5dp"
         android:textColor="#000"/>
 </RelativeLayout>
