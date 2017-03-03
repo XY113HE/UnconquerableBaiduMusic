@@ -27,7 +27,9 @@
         android:layout_alignTop="@id/iv_item_mylogin_topbar_headimg"
         android:layout_toEndOf="@id/iv_item_mylogin_topbar_headimg"
         />
+
     <TextView
+        android:id="@+id/iv_item_mylogin_login_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"

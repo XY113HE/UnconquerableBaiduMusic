@@ -84,7 +84,6 @@ public class FindGridViewLiveAdapter extends BaseAdapter {
             }
         }
         //TODO 具体数据设置操作
-        Log.e(TAG, "getView: " + position);
         return convertView;
     }
 

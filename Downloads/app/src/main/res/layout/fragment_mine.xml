@@ -19,17 +19,17 @@
         <!--用户头像-->
         <ImageView
             android:id="@+id/iv_user_head"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_alignBottom="@id/iv_minefragment_uppart"
             android:src="@mipmap/img_titlebar_login"
-            android:padding="10dp"
+            android:layout_margin="10dp"
             />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_alignTop="@id/iv_user_head"
+            android:layout_alignBottom="@id/iv_user_head"
             android:layout_toRightOf="@id/iv_user_head"
             android:orientation="vertical">
             <TextView
@@ -327,13 +327,29 @@
                 android:layout_centerVertical="true"
                 android:text=",  让音乐跟着你走"/>
         </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_minefragment_collect"
+            android:layout_below="@id/ll_minefragment_my_collect_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/collect"/>
 
 
         <View
+            android:id="@+id/login_in_bottom_view"
             android:layout_below="@id/rl_musicfragment_login"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#29ea3c"/>
+            android:layout_height="50dp"/>
+        <View
+            android:id="@+id/login_out_bottom_view"
+            android:layout_below="@id/iv_minefragment_collect"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:background="#55a5bf"
+            android:layout_height="50dp"/>
 
     </RelativeLayout>
 </ScrollView>

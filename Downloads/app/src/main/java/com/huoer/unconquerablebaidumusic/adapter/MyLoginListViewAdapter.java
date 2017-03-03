@@ -20,6 +20,7 @@ package com.huoer.unconquerablebaidumusic.adapter;
 */
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ProviderInfo;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,16 +32,37 @@ import android.widget.TextView;
 
 import com.huoer.unconquerablebaidumusic.R;
 
+import java.security.PrivateKey;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.tencent.qq.QQ;
+
 public class MyLoginListViewAdapter extends BaseAdapter {
+    private static final String TAG = "MyLoginListViewAdapter";
     private final int BODY_VIEW = 0;
     private final int FOOT_VIEW = 1;
+    private boolean isLoginIn;
 
     private Context context;
     private String[] titles;
     private int[] imgIds;
 
+    private LoginStateChanged loginStateListener;
+
+    public void setLoginStateListener(LoginStateChanged loginStateListener) {
+        this.loginStateListener = loginStateListener;
+    }
+
+    public void setLoginIn(boolean loginIn) {
+        isLoginIn = loginIn;
+        Log.e(TAG, "setLoginIn: " +isLoginIn);
+        notifyDataSetChanged();
+    }
+
     public void setContext(Context context) {
         this.context = context;
+        ShareSDK.initSDK(context);
     }
 
     public void setTitles(String[] titles) {
@@ -54,7 +76,7 @@ public class MyLoginListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return titles.length;
+        return titles.length+1;
     }
 
     @Override
@@ -91,8 +113,27 @@ public class MyLoginListViewAdapter extends BaseAdapter {
             case FOOT_VIEW:
 
                 v = LayoutInflater.from(context).inflate(R.layout.item_mylogin_foot_view, parent, false);
-                v.findViewById(R.id.tv_item_mylogin_foot_view).setVisibility(View.GONE);
-
+                TextView tv = (TextView) v.findViewById(R.id.tv_item_mylogin_foot_view);
+                tv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e(TAG, "onClick: qq.removeAccount");
+                        Platform qq = ShareSDK.getPlatform(context, QQ.NAME);
+                        qq.removeAccount();
+                        SharedPreferences sp = context.getSharedPreferences("user_state", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putBoolean("login", false);
+                        editor.commit();
+                        loginStateListener.updateView();
+                    }
+                });
+                if(isLoginIn){
+                    Log.e(TAG, "getView: " + isLoginIn);
+                   tv.setVisibility(View.VISIBLE);
+                }else {
+                    Log.e(TAG, "getView: " + isLoginIn);
+                    tv.setVisibility(View.GONE);
+                }
                 break;
         }
 
@@ -117,10 +158,14 @@ public class MyLoginListViewAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if(position == titles.length+1){
+        if(position == titles.length){
             return FOOT_VIEW;
         }else{
             return BODY_VIEW;
         }
+    }
+
+    public interface LoginStateChanged{
+        void updateView();
     }
 }
