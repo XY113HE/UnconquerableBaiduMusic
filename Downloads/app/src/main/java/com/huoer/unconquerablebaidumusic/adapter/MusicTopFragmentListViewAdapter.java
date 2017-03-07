@@ -27,7 +27,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicTopBean;
 
 import java.util.List;
 
@@ -35,9 +37,13 @@ public class MusicTopFragmentListViewAdapter extends BaseAdapter {
     private static final String TAG = "MusicTopFragmentListVie";
 
     private Context context;
-    private List data;
+    private List<MusicTopBean.ContentBeanX> contentBeanXList;
     private final int NORMAL_VIEW = 0, BOTTOM_VIEW = 1;
-    private int dataSize = 10;
+
+    public void setContentBeanXList(List<MusicTopBean.ContentBeanX> contentBeanXList) {
+        this.contentBeanXList = contentBeanXList;
+        notifyDataSetChanged();
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -45,7 +51,7 @@ public class MusicTopFragmentListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize+1;
+        return contentBeanXList.size()+1;
     }
 
     @Override
@@ -90,10 +96,19 @@ public class MusicTopFragmentListViewAdapter extends BaseAdapter {
         switch (getItemViewType(position)){
             case NORMAL_VIEW:
                 //TODO 具体数据的设置
+                MusicTopBean.ContentBeanX bean = contentBeanXList.get(position);
+                Glide.with(context).load(bean.getPic_s210()).into(topViewHolder.bg);
+                topViewHolder.kind.setText(bean.getName());
+                List<MusicTopBean.ContentBeanX.ContentBean> beans = bean.getContent();
+                topViewHolder.song1.setText(beans.get(0).getTitle());
+                topViewHolder.song2.setText(beans.get(1).getTitle());
+                topViewHolder.song3.setText(beans.get(2).getTitle());
                 break;
             case BOTTOM_VIEW:
                 break;
         }
+
+
 
 
         return convertView;
@@ -106,7 +121,7 @@ public class MusicTopFragmentListViewAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == dataSize) {
+        if (position == contentBeanXList.size()) {
             return BOTTOM_VIEW;
         } else {
             return NORMAL_VIEW;
@@ -114,12 +129,11 @@ public class MusicTopFragmentListViewAdapter extends BaseAdapter {
     }
 
     class TopViewHolder {
-        ImageView bg, play;
+        ImageView bg;
         TextView kind, song1, song2, song3;
 
         TopViewHolder(View view) {
             bg = (ImageView) view.findViewById(R.id.iv_item_music_top_listview_bg);
-            play = (ImageView) view.findViewById(R.id.iv_item_music_top_listview_play);
             kind = (TextView) view.findViewById(R.id.tv_item_music_top_listview_kind);
             song1 = (TextView) view.findViewById(R.id.tv_item_music_top_listview_list1);
             song2 = (TextView) view.findViewById(R.id.tv_item_music_top_listview_list2);

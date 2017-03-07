@@ -28,12 +28,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.FindBean;
+
+import java.util.List;
 
 public class FindGridViewShopAdapter extends BaseAdapter {
+    private List<FindBean.ResultBean.ShopInfoBean.ShopListBean> shopListBeanList;
     private static final String TAG = "FindGridViewShopAdapter";
     private Context context;
-    private int dataSize = 3;
+
+    public void setShopListBeanList(List<FindBean.ResultBean.ShopInfoBean.ShopListBean> shopListBeanList) {
+        this.shopListBeanList = shopListBeanList;
+        notifyDataSetChanged();
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -41,7 +50,7 @@ public class FindGridViewShopAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize;
+        return shopListBeanList.size();
     }
 
     @Override
@@ -66,6 +75,10 @@ public class FindGridViewShopAdapter extends BaseAdapter {
         }
 
         //TODO 具体数据设 置操作
+        FindBean.ResultBean.ShopInfoBean.ShopListBean bean = shopListBeanList.get(position);
+        Glide.with(context).load(bean.getPicurl()).into(holder.bg);
+        holder.title.setText(bean.getTitle());
+
         return convertView;
     }
 

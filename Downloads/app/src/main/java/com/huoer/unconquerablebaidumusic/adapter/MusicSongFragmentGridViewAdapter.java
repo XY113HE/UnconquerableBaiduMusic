@@ -20,7 +20,6 @@ package com.huoer.unconquerablebaidumusic.adapter;/*
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,16 +27,33 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicSongHotBean;
+import com.huoer.unconquerablebaidumusic.bean.MusicSongNewBean;
+
+import java.util.List;
 
 public class MusicSongFragmentGridViewAdapter extends BaseAdapter {
     private static final String TAG = "MusicSongFragmentGridVi";
+    private List<MusicSongHotBean.DiyInfoBean> diyInfoBeanListHot;
+    private List<MusicSongNewBean.DiyInfoBean> diyInfoBeanListNew;
+    private int dataSize;
+
+    public void setDiyInfoBeanListHot(List<MusicSongHotBean.DiyInfoBean> diyInfoBeanListHot) {
+        this.diyInfoBeanListHot = diyInfoBeanListHot;
+        notifyDataSetChanged();
+    }
+
+    public void setDiyInfoBeanListNew(List<MusicSongNewBean.DiyInfoBean> diyInfoBeanListNew) {
+        this.diyInfoBeanListNew = diyInfoBeanListNew;
+        notifyDataSetChanged();
+    }
 
     private Context context;
-    private int dataSize = 20;
     private final int NORMAL_VIEW_LEFT = 0, NORMAL_VIEW_RIGHT = 1,
             BOTTOM_VIEW = 2, HEAD_VIEW = 3;
-    private int dataType = 1;
+    private int dataType = 1;//默认1为最热
 
     public void setDataType(int dataType) {
         this.dataType = dataType;
@@ -50,7 +66,14 @@ public class MusicSongFragmentGridViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize+2;
+        dataSize = dataType == 1 ? diyInfoBeanListHot.size() + 2 : diyInfoBeanListNew.size() + 2;
+
+        if (dataSize % 2 == 1) {
+            dataSize--;
+        }
+
+        return dataSize;
+
     }
 
     @Override
@@ -105,23 +128,55 @@ public class MusicSongFragmentGridViewAdapter extends BaseAdapter {
                     break;
             }
         }
-        int bgColor = dataType == 0 ? Color.parseColor("#c5efb1")
-                    : Color.parseColor("#ecd2d2");
+        if (dataType == 1) {
 
-        switch (getItemViewType(position)) {
+            switch (getItemViewType(position)) {
 
-            case NORMAL_VIEW_LEFT:
-                //TODO 具体数据设置
-                songLeftViewHolder.bg.setBackgroundColor(bgColor);
-                break;
-            case NORMAL_VIEW_RIGHT:
-                songRightViewHolder.bg.setBackgroundColor(bgColor);
-                break;
-            case BOTTOM_VIEW:
-                break;
-            case HEAD_VIEW:
-                break;
+                case NORMAL_VIEW_LEFT:
+                    //TODO 具体数据设置
+                    MusicSongHotBean.DiyInfoBean beanLeft = diyInfoBeanListHot.get(position);
+                    Glide.with(context).load(beanLeft.getList_pic()).into(songLeftViewHolder.bg);
+                    songLeftViewHolder.author.setText("by " + beanLeft.getUsername());
+                    songLeftViewHolder.songAmount.setText(beanLeft.getListen_num() + "");
+                    songLeftViewHolder.title.setText(beanLeft.getTitle());
+                    break;
+                case NORMAL_VIEW_RIGHT:
+                    MusicSongHotBean.DiyInfoBean beanRight = diyInfoBeanListHot.get(position);
+                    Glide.with(context).load(beanRight.getList_pic()).into(songRightViewHolder.bg);
+                    songRightViewHolder.author.setText("by " + beanRight.getUsername());
+                    songRightViewHolder.songAmount.setText(beanRight.getListen_num() + "");
+                    songRightViewHolder.title.setText(beanRight.getTitle());
+                    break;
+                case BOTTOM_VIEW:
+                    break;
+                case HEAD_VIEW:
+                    break;
+            }
+        } else {
+            switch (getItemViewType(position)) {
+
+                case NORMAL_VIEW_LEFT:
+                    //TODO 具体数据设置
+                    MusicSongNewBean.DiyInfoBean beanLeft = diyInfoBeanListNew.get(position);
+                    Glide.with(context).load(beanLeft.getList_pic()).into(songLeftViewHolder.bg);
+                    songLeftViewHolder.author.setText("by " + beanLeft.getUsername());
+                    songLeftViewHolder.songAmount.setText(beanLeft.getListen_num() + "");
+                    songLeftViewHolder.title.setText(beanLeft.getTitle());
+                    break;
+                case NORMAL_VIEW_RIGHT:
+                    MusicSongNewBean.DiyInfoBean beanRight = diyInfoBeanListNew.get(position);
+                    Glide.with(context).load(beanRight.getList_pic()).into(songRightViewHolder.bg);
+                    songRightViewHolder.author.setText("by " + beanRight.getUsername());
+                    songRightViewHolder.songAmount.setText(beanRight.getListen_num() + "");
+                    songRightViewHolder.title.setText(beanRight.getTitle());
+                    break;
+                case BOTTOM_VIEW:
+                    break;
+                case HEAD_VIEW:
+                    break;
+            }
         }
+
 
         return convertView;
     }
@@ -134,7 +189,7 @@ public class MusicSongFragmentGridViewAdapter extends BaseAdapter {
             bg = (ImageView) v.findViewById(R.id.iv_item_music_song_gridview_bg);
             songAmount = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_listen_amount);
             title = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_title);
-            author = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_listen_amount);
+            author = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_author);
         }
     }
 
@@ -146,7 +201,7 @@ public class MusicSongFragmentGridViewAdapter extends BaseAdapter {
             bg = (ImageView) v.findViewById(R.id.iv_item_music_song_gridview_bg);
             songAmount = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_listen_amount);
             title = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_title);
-            author = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_listen_amount);
+            author = (TextView) v.findViewById(R.id.tv_item_music_song_gridview_author);
         }
     }
 
@@ -157,9 +212,10 @@ public class MusicSongFragmentGridViewAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if(position == 0 || position == 1){
+
+        if (position == 0 || position == 1) {
             return HEAD_VIEW;
-        }else if (position == dataSize + 1 || position == dataSize) {
+        } else if (position == dataSize -1 || position == dataSize-2) {
             return BOTTOM_VIEW;
         } else if (position % 2 == 0) {
             return NORMAL_VIEW_LEFT;

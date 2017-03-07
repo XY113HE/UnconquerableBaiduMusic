@@ -28,13 +28,31 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicMovieHotBean;
+import com.huoer.unconquerablebaidumusic.bean.MusicMovieNewBean;
+import com.huoer.unconquerablebaidumusic.bean.MusicSongHotBean;
+
+import java.util.List;
 
 public class MusicMovieFragmentGridViewAdapter extends BaseAdapter {
     private Context context;
-    private int dataSize = 20;
-    private int dataType;
+    private List<MusicMovieNewBean.ResultBean.MvListBean> mvListBeanListNew;
+    private List<MusicMovieHotBean.ResultBean.MvListBean> mvListBeanListHot;
+    private int dataType = 0;//默认0为最新
     private final int HEAD_VIEW = 0, NORMAL_VIEW_LEFT = 1, NORMAL_VIEW_RIGHT = 2, BOTTOM_VIEW = 3;
+    private int dataSize;
+
+    public void setMvListBeanListHot(List<MusicMovieHotBean.ResultBean.MvListBean> mvListBeanListHot) {
+        this.mvListBeanListHot = mvListBeanListHot;
+        notifyDataSetChanged();
+    }
+
+    public void setMvListBeanListNew(List<MusicMovieNewBean.ResultBean.MvListBean> mvListBeanListNew) {
+        this.mvListBeanListNew = mvListBeanListNew;
+        notifyDataSetChanged();
+    }
 
     public void setDataType(int dataType) {
         this.dataType = dataType;
@@ -47,7 +65,12 @@ public class MusicMovieFragmentGridViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize+2;
+        dataSize = dataType == 0 ? mvListBeanListNew.size()+2 : mvListBeanListHot.size()+2;
+        if(dataSize%2 == 1){
+            dataSize--;
+        }
+        return dataSize;
+
     }
 
     @Override
@@ -106,23 +129,49 @@ public class MusicMovieFragmentGridViewAdapter extends BaseAdapter {
                     break;
             }
         }
-
-        int color = dataType == 0 ? Color.parseColor("#c0c2dc")
-                    : Color.parseColor("#a8faa8");
-
-        switch (getItemViewType(position)){
-            case HEAD_VIEW:
-                break;
-            case NORMAL_VIEW_LEFT:
-                //TODO 具体控件赋予数据
-                movieViewHolderLeft.bg.setBackgroundColor(color);
-                break;
-            case NORMAL_VIEW_RIGHT:
-                movieViewHolderRight.bg.setBackgroundColor(color);
-                break;
-            case BOTTOM_VIEW:
-                break;
+        if(dataType == 0){
+            switch (getItemViewType(position)){
+                case HEAD_VIEW:
+                    break;
+                case NORMAL_VIEW_LEFT:
+                    MusicMovieNewBean.ResultBean.MvListBean beanLeft = mvListBeanListNew.get(position);
+                    Glide.with(context).load(beanLeft.getThumbnail()).into(movieViewHolderLeft.bg);
+                    movieViewHolderLeft.songName.setText(beanLeft.getTitle());
+                    movieViewHolderLeft.songSinger.setText(beanLeft.getArtist());
+                    //TODO 具体控件赋予数据
+                    break;
+                case NORMAL_VIEW_RIGHT:
+                    MusicMovieNewBean.ResultBean.MvListBean beanRight = mvListBeanListNew.get(position);
+                    Glide.with(context).load(beanRight.getThumbnail()).into(movieViewHolderRight.bg);
+                    movieViewHolderRight.songName.setText(beanRight.getTitle());
+                    movieViewHolderRight.songSinger.setText(beanRight.getArtist());
+                    break;
+                case BOTTOM_VIEW:
+                    break;
+            }
+        }else{
+            switch (getItemViewType(position)){
+                case HEAD_VIEW:
+                    break;
+                case NORMAL_VIEW_LEFT:
+                    MusicMovieHotBean.ResultBean.MvListBean beanLeft = mvListBeanListHot.get(position);
+                    Glide.with(context).load(beanLeft.getThumbnail()).into(movieViewHolderLeft.bg);
+                    movieViewHolderLeft.songName.setText(beanLeft.getTitle());
+                    movieViewHolderLeft.songSinger.setText(beanLeft.getArtist());
+                    //TODO 具体控件赋予数据
+                    break;
+                case NORMAL_VIEW_RIGHT:
+                    MusicMovieHotBean.ResultBean.MvListBean beanRight = mvListBeanListHot.get(position);
+                    Glide.with(context).load(beanRight.getThumbnail()).into(movieViewHolderRight.bg);
+                    movieViewHolderRight.songName.setText(beanRight.getTitle());
+                    movieViewHolderRight.songSinger.setText(beanRight.getArtist());
+                    break;
+                case BOTTOM_VIEW:
+                    break;
+            }
         }
+
+
 
 
         return convertView;
@@ -135,7 +184,8 @@ public class MusicMovieFragmentGridViewAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == dataSize || position == dataSize+1) {
+
+        if (position == dataSize-2 || position == dataSize-1) {
             return BOTTOM_VIEW;
         }else if(position == 0 || position == 1){
             return HEAD_VIEW;
@@ -145,6 +195,7 @@ public class MusicMovieFragmentGridViewAdapter extends BaseAdapter {
             return NORMAL_VIEW_RIGHT;
         }
     }
+
 
     class MovieViewHolderLeft {
         ImageView bg;

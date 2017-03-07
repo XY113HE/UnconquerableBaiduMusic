@@ -7,8 +7,7 @@
         android:id="@+id/iv_item_music_recommend_gridview_original_music_bg"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:background="#f5e5e3"/>
+        android:scaleType="fitXY"/>
     <TextView
         android:layout_marginTop="3dp"
         android:id="@+id/tv_item_music_recommend_gridview_original_music_title"

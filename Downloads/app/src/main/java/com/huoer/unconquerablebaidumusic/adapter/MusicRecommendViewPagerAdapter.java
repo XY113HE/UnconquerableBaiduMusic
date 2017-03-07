@@ -27,22 +27,25 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicRecommendCircleBean;
+
+import java.util.List;
 
 public class MusicRecommendViewPagerAdapter extends PagerAdapter {
     private static final String TAG = "MusicRecommendViewPager";
-    private int[] imgIds;
     private Context context;
+    private List<MusicRecommendCircleBean.PicBean> picBeanList;
+
+    public void setPicBeanList(List<MusicRecommendCircleBean.PicBean> picBeanList) {
+        this.picBeanList = picBeanList;
+        notifyDataSetChanged();
+    }
 
     public void setContext(Context context) {
         this.context = context;
     }
-
-    public void setImgIds(int[] imgIds) {
-        this.imgIds = imgIds;
-    }
-
-
 
     @Override
     public int getCount() {
@@ -56,14 +59,14 @@ public class MusicRecommendViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        position%=imgIds.length;
+        position%=picBeanList.size();
         if (position<0){
-            position = imgIds.length+position;
+            position = picBeanList.size()+position;
 
         }
         View view = LayoutInflater.from(context).inflate(R.layout.item_music_pk_viewpager,container,false);
         ImageView imageView = (ImageView) view.findViewById(R.id.iv_item_music_pk_circleimg);
-        imageView.setImageResource(imgIds[position]);
+        Glide.with(context).load(picBeanList.get(position).getRandpic()).into(imageView);
 
         //将父容器中删除当前视图。
         ViewParent vp = view.getParent();

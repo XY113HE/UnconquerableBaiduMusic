@@ -33,10 +33,25 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicPkListBean;
+import com.huoer.unconquerablebaidumusic.bean.MusicPkWeSingBean;
+
+import java.util.List;
 
 public class MusicPKGridViewMyPkAdapter extends BaseAdapter {
     private Context context;
-    private int dataSize = 6;
+    private List<MusicPkListBean.ResultBean.ItemsBean> itemsBeanList;
+    private int[] imgIds;
+
+    public void setItemsBeanList(List<MusicPkListBean.ResultBean.ItemsBean> itemsBeanList) {
+        this.itemsBeanList = itemsBeanList;
+        notifyDataSetChanged();
+    }
+
+    public void setImgIds(int[] imgIds) {
+        this.imgIds = imgIds;
+        notifyDataSetChanged();
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -44,7 +59,7 @@ public class MusicPKGridViewMyPkAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize;
+        return itemsBeanList.size();
     }
 
     @Override
@@ -69,7 +84,9 @@ public class MusicPKGridViewMyPkAdapter extends BaseAdapter {
         }
         //TODO 具体数据的设置操作
         final MyPkViewHolder finalHolder = holder;
-        Glide.with(context).load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488291826595&di=12fa9d9897f25abc34f75ceac571df4b&imgtype=0&src=http%3A%2F%2Fpic5.duowan.com%2Fqn%2F1204%2F198364104134%2F198364311388.jpg").asBitmap().centerCrop().into(new BitmapImageViewTarget(finalHolder.bg) {
+
+        MusicPkListBean.ResultBean.ItemsBean bean = itemsBeanList.get(position);
+        Glide.with(context).load(imgIds[position]).asBitmap().centerCrop().into(new BitmapImageViewTarget(finalHolder.bg) {
             @Override
             protected void setResource(Bitmap resource) {
                 RoundedBitmapDrawable circularBitmapDrawable =
@@ -78,7 +95,7 @@ public class MusicPKGridViewMyPkAdapter extends BaseAdapter {
                 finalHolder.bg.setImageDrawable(circularBitmapDrawable);
             }
         });
-
+        holder.title.setText(bean.getDesc());
 
         return convertView;
     }

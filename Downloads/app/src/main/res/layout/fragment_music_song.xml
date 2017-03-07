@@ -15,7 +15,8 @@
             android:id="@+id/gridview_musicfragment_song"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="2">
+            android:numColumns="2"
+            android:scrollbars="none">
 
         </GridView>
         <!--顶部标题栏-->

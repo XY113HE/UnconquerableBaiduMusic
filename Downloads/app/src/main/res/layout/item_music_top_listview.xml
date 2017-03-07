@@ -9,7 +9,7 @@
         android:id="@+id/iv_item_music_top_listview_bg"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#dcb9f9"/>
+        android:scaleType="fitXY"/>
     <!--播放按钮-->
     <ImageView
         android:id="@+id/iv_item_music_top_listview_play"

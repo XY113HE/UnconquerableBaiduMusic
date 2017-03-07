@@ -30,6 +30,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,7 +47,7 @@ import com.huoer.unconquerablebaidumusic.bean.UserInfoBean;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class MyLoginFragment extends BaseFragment implements View.OnClickListener {
+public class MyLoginFragment extends BaseFragment implements View.OnClickListener, View.OnTouchListener {
     private static final String TAG = "MyLoginFragment";
     private ListView listView;
     private String[] titles = {"我的消息", "我的积分", "成为白金VIP", "免流量听歌",
@@ -151,7 +152,7 @@ public class MyLoginFragment extends BaseFragment implements View.OnClickListene
                 userInfoBean.setName(nickname);
                 userInfoBean.setLogin(isLogin);
                 EventBus.getDefault().post(userInfoBean);
-
+                Log.e(TAG, "updateView: post");
             }
         });
 
@@ -162,7 +163,7 @@ public class MyLoginFragment extends BaseFragment implements View.OnClickListene
         backMain.setOnClickListener(this);
         signIn.setOnClickListener(this);
         loginInText.setOnClickListener(this);
-
+        v.setOnTouchListener(this);
     }
 
     @Override
@@ -238,5 +239,14 @@ public class MyLoginFragment extends BaseFragment implements View.OnClickListene
                 adapter.setLoginIn(true);
             }
         }
+
+
+        EventBus.getDefault().post(new UserInfoBean());
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+
+        return true;
     }
 }

@@ -7,7 +7,6 @@
         android:id="@+id/iv_item_music_recommend_listview_special_column_bg"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="#dbbff9"
         android:layout_centerVertical="true"/>
     <LinearLayout
         android:layout_width="match_parent"

@@ -27,10 +27,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicPkWeSingBean;
+
+import java.util.List;
 
 public class MusicPKListViewWeSingAdapter extends BaseAdapter {
     private Context context;
-    private int dataSize = 10;
+    private List<MusicPkWeSingBean.ResultBean.ItemsBean> itemsBeanList;
+
+    public void setItemsBeanList(List<MusicPkWeSingBean.ResultBean.ItemsBean> itemsBeanList) {
+        this.itemsBeanList = itemsBeanList;
+        notifyDataSetChanged();
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -38,7 +46,7 @@ public class MusicPKListViewWeSingAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize;
+        return itemsBeanList.size();
     }
 
     @Override
@@ -62,6 +70,9 @@ public class MusicPKListViewWeSingAdapter extends BaseAdapter {
             holder = (WeSingViewHolder) convertView.getTag();
         }
         //TODO 设置具体数据的操作
+        MusicPkWeSingBean.ResultBean.ItemsBean bean = itemsBeanList.get(position);
+        holder.songName.setText(bean.getSong_title()+" - "+bean.getArtist_name());
+        holder.amount.setText(bean.getPlay_num()+"人唱过");
 
         return convertView;
     }

@@ -27,12 +27,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicRecommendBean;
+
+import java.util.List;
 
 public class MusicRecommendGridViewOriginalMusicAdapter extends BaseAdapter {
     private Context context;
-    private int dataSize = 3;
+    private List<MusicRecommendBean.ResultBeanXXXXXXXXXXXXXXX.Mix9Bean.ResultBean> resultBeanList;
 
+    public void setResultBeanList(List<MusicRecommendBean.ResultBeanXXXXXXXXXXXXXXX.Mix9Bean.ResultBean> resultBeanList) {
+        this.resultBeanList = resultBeanList;
+        notifyDataSetChanged();
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -40,7 +48,7 @@ public class MusicRecommendGridViewOriginalMusicAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize;
+        return resultBeanList.size();
     }
 
     @Override
@@ -65,7 +73,9 @@ public class MusicRecommendGridViewOriginalMusicAdapter extends BaseAdapter {
         }
 
         //TODO 具体数据的设置操作
-
+        MusicRecommendBean.ResultBeanXXXXXXXXXXXXXXX.Mix9Bean.ResultBean bean = resultBeanList.get(position);
+        Glide.with(context).load(bean.getPic()).into(holder.bg);
+        holder.title.setText(bean.getTitle());
 
         return convertView;
     }

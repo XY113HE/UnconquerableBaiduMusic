@@ -30,6 +30,10 @@ import android.widget.TextView;
 import com.huoer.unconquerablebaidumusic.R;
 import com.huoer.unconquerablebaidumusic.adapter.MusicMovieFragmentGridViewAdapter;
 import com.huoer.unconquerablebaidumusic.base.BaseFragment;
+import com.huoer.unconquerablebaidumusic.bean.MusicMovieHotBean;
+import com.huoer.unconquerablebaidumusic.bean.MusicMovieNewBean;
+import com.huoer.unconquerablebaidumusic.inter.MyCallBack;
+import com.huoer.unconquerablebaidumusic.nettools.NetTools;
 
 
 public class MusicMovieFragment extends BaseFragment implements View.OnClickListener {
@@ -39,6 +43,9 @@ public class MusicMovieFragment extends BaseFragment implements View.OnClickList
     private TextView hotest, newest;
     private boolean topBarIsShow = true;
     private RelativeLayout topBarLayout;
+
+    private MusicMovieNewBean musicMovieNewBean;
+    private MusicMovieHotBean musicMovieHotBean;
 
     @Override
     protected int bindLayout() {
@@ -56,8 +63,38 @@ public class MusicMovieFragment extends BaseFragment implements View.OnClickList
     @Override
     protected void initData() {
         adapter = new MusicMovieFragmentGridViewAdapter();
-        adapter.setContext(getContext());
-        gridView.setAdapter(adapter);
+
+        String newurl = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=-1&provider=11%2C12&method=baidu.ting.mv.searchMV&format=json&order=1&page_num=1&page_size=20&query=%E5%85%A8%E9%83%A8";
+        NetTools.getInstance().startRequest(newurl, MusicMovieNewBean.class, new MyCallBack<MusicMovieNewBean>() {
+            @Override
+            public void success(MusicMovieNewBean respomse) {
+                musicMovieNewBean = respomse;
+                adapter.setMvListBeanListNew(respomse.getResult().getMv_list());
+                adapter.setContext(getContext());
+                gridView.setAdapter(adapter);
+            }
+
+            @Override
+            public void error(Throwable throwable) {
+                Log.e(TAG, "error: fail to internet");
+            }
+        });
+
+        String hoturl = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=-1&provider=11%2C12&method=baidu.ting.mv.searchMV&format=json&order=0&page_num=1&page_size=20&query=%E5%85%A8%E9%83%A8";
+
+        NetTools.getInstance().startRequest(hoturl, MusicMovieHotBean.class, new MyCallBack<MusicMovieHotBean>() {
+            @Override
+            public void success(MusicMovieHotBean respomse) {
+                musicMovieHotBean = respomse;
+                adapter.setMvListBeanListHot(respomse.getResult().getMv_list());
+            }
+
+            @Override
+            public void error(Throwable throwable) {
+                Log.e(TAG, "error: fail to internet");
+            }
+        });
+
 
     }
 

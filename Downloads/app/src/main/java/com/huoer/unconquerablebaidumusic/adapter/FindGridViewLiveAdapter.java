@@ -28,14 +28,23 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.FindBean;
+
+import java.util.List;
 
 public class FindGridViewLiveAdapter extends BaseAdapter {
     private static final String TAG = "FindGridViewLiveAdapter";
     private final int BODY_VIEW = 0;
     private final int FOOT_VIEW = 1;
     private Context context;
-    private int dataSize = 4;
+    private List<FindBean.ResultBean.LiveInfoBean.LiveListBean> liveListBeen;
+
+    public void setLiveListBeen(List<FindBean.ResultBean.LiveInfoBean.LiveListBean> liveListBeen) {
+        this.liveListBeen = liveListBeen;
+        notifyDataSetChanged();
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -43,7 +52,7 @@ public class FindGridViewLiveAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize+2;
+        return liveListBeen.size()+2;
     }
 
     @Override
@@ -84,6 +93,13 @@ public class FindGridViewLiveAdapter extends BaseAdapter {
             }
         }
         //TODO 具体数据设置操作
+        if(liveViewHolder != null){
+            FindBean.ResultBean.LiveInfoBean.LiveListBean bean = liveListBeen.get(position);
+            Glide.with(context).load(bean.getLiveimg()).into(liveViewHolder.bg);
+            liveViewHolder.amount.setText(bean.getUsercount()+"");
+            liveViewHolder.title.setText(bean.getNickname());
+        }
+
         return convertView;
     }
 
@@ -107,7 +123,7 @@ public class FindGridViewLiveAdapter extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
 //        return BODY_VIEW;
-        if(position == dataSize || position == dataSize+1){
+        if(position == liveListBeen.size() || position == liveListBeen.size()+1){
             return FOOT_VIEW;
         }else{
             return BODY_VIEW;

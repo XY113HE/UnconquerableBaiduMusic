@@ -21,14 +21,19 @@ package com.huoer.unconquerablebaidumusic.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ProviderInfo;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.huoer.unconquerablebaidumusic.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SurchMusicListViewAdapter extends BaseAdapter {
     private Context context;
@@ -36,6 +41,7 @@ public class SurchMusicListViewAdapter extends BaseAdapter {
     private final int BODY_VIEW = 0;
     private final int FOOT_VIEW = 1;
     private OnClearListener onClearListener;
+    private List<String> historys = new ArrayList<String>();
 
     public void setOnClearListener(OnClearListener onClearListener) {
         this.onClearListener = onClearListener;
@@ -43,6 +49,12 @@ public class SurchMusicListViewAdapter extends BaseAdapter {
 
     public void setDataSize(int dataSize) {
         this.dataSize = dataSize;
+        historys.add("生生世世爱");
+        historys.add("偏爱");
+        historys.add("此生不换");
+        historys.add("何必要在一起");
+        historys.add("起床吃茶去");
+        historys.add("十世镜");
         notifyDataSetChanged();
     }
 
@@ -79,6 +91,13 @@ public class SurchMusicListViewAdapter extends BaseAdapter {
                     holder = (HistoryViewHolder) convertView.getTag();
                 }
                 //TODO 具体数据设置操作
+//                holder.delBtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dataSize--;
+//
+//                    }
+//                });
                 v = convertView;
                 break;
             case FOOT_VIEW:
@@ -96,8 +115,10 @@ public class SurchMusicListViewAdapter extends BaseAdapter {
 
     class HistoryViewHolder{
         TextView history;
+        ImageView delBtn;
         HistoryViewHolder(View itemview){
             history = (TextView) itemview.findViewById(R.id.tv_item_surchmusic_listview_history);
+//            delBtn = itemview.findViewById(R.id.iv_item_surchmusic_history_del);
         }
     }
 

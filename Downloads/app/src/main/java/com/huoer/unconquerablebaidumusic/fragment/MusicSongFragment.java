@@ -31,6 +31,10 @@ import com.huoer.unconquerablebaidumusic.R;
 import com.huoer.unconquerablebaidumusic.adapter.MusicFragmentViewPagerAdapter;
 import com.huoer.unconquerablebaidumusic.adapter.MusicSongFragmentGridViewAdapter;
 import com.huoer.unconquerablebaidumusic.base.BaseFragment;
+import com.huoer.unconquerablebaidumusic.bean.MusicSongHotBean;
+import com.huoer.unconquerablebaidumusic.bean.MusicSongNewBean;
+import com.huoer.unconquerablebaidumusic.inter.MyCallBack;
+import com.huoer.unconquerablebaidumusic.nettools.NetTools;
 
 public class MusicSongFragment extends BaseFragment implements View.OnClickListener {
     private static final String TAG = "MusicSongFragment";
@@ -40,6 +44,9 @@ public class MusicSongFragment extends BaseFragment implements View.OnClickListe
     private TextView newest, hotest;
     private RelativeLayout layout;
     private boolean topbarIsShow = true;
+
+    private MusicSongHotBean musicSongHotBean;
+    private MusicSongNewBean musicSongNewBean;
 
 
     @Override
@@ -58,8 +65,37 @@ public class MusicSongFragment extends BaseFragment implements View.OnClickListe
     @Override
     protected void initData() {
         adapter = new MusicSongFragmentGridViewAdapter();
-        adapter.setContext(getContext());
-        gridview.setAdapter(adapter);
+        String hotUrl = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.ugcdiy.getChanneldiy&param=aUeJzjQd0Bxv60bsMl1nzvktSPLjc5EcGxFAt77r3ORvfYOi0G0UiMU15Gu9rmiLXpXaecx%2BVhS3VNWrDDHaz%2FdPLIB52H4GjQR8wkaLFrrkLECGMiGJkF9toxnAK5KX&timestamp=1486632431&sign=39afa305d4a82eb67ac1f191f47f64e6";
+        NetTools.getInstance().startRequest(hotUrl, MusicSongHotBean.class, new MyCallBack<MusicSongHotBean>() {
+            @Override
+            public void success(MusicSongHotBean respomse) {
+                musicSongHotBean = respomse;
+
+                adapter.setDiyInfoBeanListHot(respomse.getDiyInfo());
+                adapter.setContext(getContext());
+                gridview.setAdapter(adapter);
+            }
+
+            @Override
+            public void error(Throwable throwable) {
+                Log.e(TAG, "error: fail to internet");
+            }
+        });
+
+        String newUrl = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.9.8.1&channel=1426d&operator=3&method=baidu.ting.ugcdiy.getChanneldiy&param=KJ8H1UO3TQ2Et%2FEveTV%2Bt8a%2Br2jCR7fbcqsY9ZTHc%2FgPcxyOAIcHfe4iGZVwp1xZsf4wFqntc9HdlL2sikphWMvxv46i1a0Lv2h0Fsugw3e5dDTIseo7qevOW3Bi5BA3&timestamp=1486633214&sign=3cf9f2490198c06166322d80ee105843";
+        NetTools.getInstance().startRequest(newUrl, MusicSongNewBean.class, new MyCallBack<MusicSongNewBean>() {
+            @Override
+            public void success(MusicSongNewBean respomse) {
+                musicSongNewBean = respomse;
+                adapter.setDiyInfoBeanListNew(respomse.getDiyInfo());
+            }
+
+            @Override
+            public void error(Throwable throwable) {
+                Log.e(TAG, "error: fail to internet");
+            }
+        });
+
     }
 
     @Override

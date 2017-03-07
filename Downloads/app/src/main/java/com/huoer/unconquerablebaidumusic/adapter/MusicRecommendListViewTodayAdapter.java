@@ -34,10 +34,17 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.huoer.unconquerablebaidumusic.R;
+import com.huoer.unconquerablebaidumusic.bean.MusicRecommendBean;
+
+import java.util.List;
 
 public class MusicRecommendListViewTodayAdapter extends BaseAdapter {
     private Context context;
-    private int dataSize = 3;
+    private List<MusicRecommendBean.ResultBeanXXXXXXXXXXXXXXX.RecsongBean.ResultBeanXXXXXXXXX> resultBeanXXXXXXXXXList;
+
+    public void setResultBeanXXXXXXXXXList(List<MusicRecommendBean.ResultBeanXXXXXXXXXXXXXXX.RecsongBean.ResultBeanXXXXXXXXX> resultBeanXXXXXXXXXList) {
+        this.resultBeanXXXXXXXXXList = resultBeanXXXXXXXXXList;
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -45,7 +52,8 @@ public class MusicRecommendListViewTodayAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataSize;
+//        return resultBeanXXXXXXXXXList.size();
+        return 3;
     }
 
     @Override
@@ -70,16 +78,12 @@ public class MusicRecommendListViewTodayAdapter extends BaseAdapter {
         }
 
         //TODO  具体数据的设置
-        final TodayViewHolder finalHolder = holder;
-        Glide.with(context).load("http://g.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=4c33f1b70dd162d985bb6a1824ef85da/5366d0160924ab18d9105e4432fae6cd7b890bba.jpg").asBitmap().centerCrop().into(new BitmapImageViewTarget(finalHolder.bg) {
-            @Override
-            protected void setResource(Bitmap resource) {
-                RoundedBitmapDrawable circularBitmapDrawable =
-                        RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                circularBitmapDrawable.setCircular(true);
-                finalHolder.bg.setImageDrawable(circularBitmapDrawable);
-            }
-        });
+
+        MusicRecommendBean.ResultBeanXXXXXXXXXXXXXXX.RecsongBean.ResultBeanXXXXXXXXX bean = resultBeanXXXXXXXXXList.get(position);
+        Glide.with(context).load(bean.getPic_premium()).into(holder.bg);
+        holder.author.setText(bean.getAuthor());
+        holder.songName.setText(bean.getTitle());
+
         return convertView;
     }
 

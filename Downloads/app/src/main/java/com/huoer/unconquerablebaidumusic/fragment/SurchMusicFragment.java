@@ -21,6 +21,7 @@ package com.huoer.unconquerablebaidumusic.fragment;
 
 import android.content.Context;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -33,7 +34,7 @@ import com.huoer.unconquerablebaidumusic.R;
 import com.huoer.unconquerablebaidumusic.adapter.SurchMusicListViewAdapter;
 import com.huoer.unconquerablebaidumusic.base.BaseFragment;
 
-public class SurchMusicFragment extends BaseFragment implements View.OnClickListener {
+public class SurchMusicFragment extends BaseFragment implements View.OnClickListener, View.OnTouchListener {
     private ListView listView;
     private SurchMusicListViewAdapter adapter;
     private TextView noHistory;
@@ -51,6 +52,8 @@ public class SurchMusicFragment extends BaseFragment implements View.OnClickList
         surchMusic = bindView(R.id.et_surchmusic);
         backMain = bindView(R.id.iv_surchmusic_return);
     }
+
+
 
     @Override
     protected void initData() {
@@ -95,6 +98,7 @@ public class SurchMusicFragment extends BaseFragment implements View.OnClickList
     @Override
     protected void initListener() {
         backMain.setOnClickListener(this);
+        v.setOnTouchListener(this);
     }
 
     @Override
@@ -105,5 +109,10 @@ public class SurchMusicFragment extends BaseFragment implements View.OnClickList
                 getFragmentManager().popBackStack();
                 break;
         }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return true;
     }
 }
